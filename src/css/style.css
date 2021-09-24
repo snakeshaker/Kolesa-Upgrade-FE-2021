@@ -20,6 +20,8 @@ body {
     align-items: center;
     height: 100vh;
     color: #1c1819;
+    font-size: 14px;
+    line-height: 24px;
 }
 
 .card {
@@ -191,4 +193,10 @@ input[type='radio']:checked + label {
     text-align: center;
     margin-right: 8px;
     margin-top: 8px;
+}
+
+/* --------------------------------------LOWER TEXT STYLES */
+.heading-bold {
+    font-weight: 600;
+    margin-bottom: 4px;
 }
