@@ -25,4 +25,18 @@ body {
     width: 1040px;
     height: 588px;
     background: #fff;
+    display: flex;
+}
+
+.card__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 24px 136px 56px;
+}
+
+.card__image__little {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
 }
