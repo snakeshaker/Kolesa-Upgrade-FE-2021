@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -18,16 +19,18 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #1c1819;
 }
 
 .card {
     border: 1px solid black;
     width: 1040px;
-    height: 588px;
     background: #fff;
+    border-radius: 16px;
     display: flex;
 }
 
+/* LEFT SIDE STYLES */
 .card__image {
     display: flex;
     flex-direction: column;
@@ -39,4 +42,83 @@ body {
     display: flex;
     gap: 8px;
     margin-top: 16px;
+}
+
+.active {
+    border: 1px solid #2a81dd;
+    border-radius: 8px;
+}
+
+/* RIGHT SIDE STYLES */
+.card__info {
+    width: 573px;
+    height: 460px;
+    align-self: center;
+}
+
+.card__info h3 {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.card__info__top {
+    position: relative;
+}
+
+.card__info__top__price {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 0;
+}
+
+.button {
+    color: #fff;
+    width: 134px;
+    height: 36px;
+    background: #2a81dd;
+    box-shadow: 0 2px 4px rgba(28, 24, 25, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 14px;
+}
+
+.balance {
+    width: 195px;
+    height: 68px;
+    background: #f0fafd;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+
+.balance__info {
+    margin-left: 16px;
+}
+
+.balance__info p {
+    color: #888b94;
+    font-size: 14px;
+}
+
+.balance__info .balance__info__sum {
+    color: #1c1819;
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.balance__logo {
+    width: 65px;
+    height: 40px;
+    background-image: url(../assets/balance-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
