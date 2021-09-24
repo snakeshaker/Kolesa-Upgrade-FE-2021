@@ -6,3 +6,23 @@
     color: #2c3e50;
     margin-top: 60px;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    border: 1px solid black;
+    width: 1040px;
+    height: 588px;
+    background: #fff;
+}
