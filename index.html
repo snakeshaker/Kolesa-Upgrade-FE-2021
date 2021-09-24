@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="card__info">
+        <form class="card__info">
             <div class="card__info__top">
                 <h3>Футболка "Эволюционируй или сдохни"</h3>
                 <p class="card__info__top__price">100 баллов</p>
@@ -45,8 +45,36 @@
                     <div class="balance__logo"></div>
                 </div>
             </div>
-
-        </div>
+            <div class="card__info__bottom">
+                <p>Цвета:</p>
+                <div class="radio-group">
+                    <input type="radio" id="color-blue" name="color-selector">
+                    <label class="color-label" for="color-blue">
+                        <div class="square square-blue"></div>
+                        Синий
+                    </label>
+                    <input type="radio" id="color-beige" name="color-selector">
+                    <label class="color-label" for="color-beige">
+                        <div class="square square-beige"></div>
+                        Бежевый
+                    </label>
+                    <input type="radio" id="color-gray" name="color-selector">
+                    <label class="color-label" for="color-gray">
+                        <div class="square square-gray"></div>
+                        Серый
+                    </label>
+                </div>
+                <p class="sizes">Размер:</p>
+                <div class="radio-group">
+                    <input type="radio" id="size-s" name="size-selector">
+                    <label class="size-label" for="size-s">S</label>
+                    <input type="radio" id="size-m" name="size-selector">
+                    <label class="size-label" for="size-m">M</label>
+                    <input type="radio" id="size-l" name="size-selector">
+                    <label class="size-label" for="size-l">L</label>
+                </div>
+            </div>
+        </form>
     </div>
   </body>
 </html>
