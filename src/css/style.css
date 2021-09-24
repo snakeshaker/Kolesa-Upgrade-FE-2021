@@ -36,6 +36,7 @@ body {
 .card {
     border: 1px solid #e9e8e8;
     max-width: 1040px;
+    overflow-y: auto;
     background: #fff;
     border-radius: 16px;
     display: flex;
