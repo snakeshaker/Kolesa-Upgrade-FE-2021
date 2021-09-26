@@ -69,6 +69,10 @@ body {
     height: 50px;
     display: flex;
     flex-flow: wrap;
+    -webkit-gap: 8px;
+    -moz-gap: 8px;
+    -ms-gap: 8px;
+    -o-gap: 8px;
     gap: 8px;
     margin-top: 16px;
 }
@@ -129,6 +133,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-gap: 12px;
+    -moz-gap: 12px;
+    -ms-gap: 12px;
+    -o-gap: 12px;
     gap: 12px;
     position: absolute;
     right: 0;
