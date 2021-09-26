@@ -41,6 +41,7 @@ body {
     border-radius: 16px;
     display: flex;
     position: relative;
+    padding: 56px 56px 64px 56px;
 }
 
 .card__close {
@@ -60,18 +61,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 56px 12px 120px 56px;
+    padding-right: 24px;
     max-width: 396px;
 }
 
 .card__image__little {
+    height: 50px;
     display: flex;
     flex-flow: wrap;
     gap: 8px;
-    padding-top: 16px;
+    margin-top: 16px;
 }
 
-.active {
+.card-image-active {
     border: 1px solid #2a81dd;
     border-radius: 8px;
 }
@@ -83,10 +85,8 @@ body {
 
 .card__info {
     width: 573px;
-    height: 460px;
     align-self: center;
-    margin-right: 56px;
-    margin-left: 12px;
+    padding-top: 8px;
 }
 
 .card__info h3 {
