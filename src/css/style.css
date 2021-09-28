@@ -16,16 +16,6 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #1c1819;
-    font-size: 14px;
-    line-height: 24px;
-}
-
-.wrapper {
+.content-container {
     max-width: 1440px;
 }
