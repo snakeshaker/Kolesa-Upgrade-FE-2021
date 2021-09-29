@@ -132,7 +132,7 @@ ul li a {
 .aside {
     grid-area: aside;
     align-self: flex-start;
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .aside__nav ul li {
