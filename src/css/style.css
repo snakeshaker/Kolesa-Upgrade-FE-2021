@@ -14,6 +14,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    color: #1c1819;
 }
 
 ul li {
@@ -32,16 +33,72 @@ ul li a {
         'aside content'
         'footer footer';
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 150px 1fr 100px;
+    grid-template-rows: 48px 1fr 100px;
     margin: 0 auto;
     height: 100vh;
+    padding-top: 32px;
+    padding-left: 32px;
+    padding-right: 40px;
 }
 
+/* HEADER STYLES */
 .header {
     grid-area: header;
-    background: yellow;
+    display: flex;
+    align-items: center;
 }
 
+.header__search {
+    display: flex;
+    width: 308px;
+    background: #f2f2f3;
+    border-radius: 8px;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: 66px;
+}
+
+.header__search__icon {
+    border: none;
+    cursor: pointer;
+}
+
+.header__search input {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    margin-left: 16px;
+}
+
+.header__search input::placeholder {
+    color: #888b94;
+}
+
+.user-block {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 52px;
+}
+
+.user-block__info {
+    padding-left: 16px;
+}
+
+.user-block__name {
+    font-size: 14px;
+    color: #2a81dd;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.user-block__points {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+/* ASIDE STYLES */
 .aside {
     grid-area: aside;
     background: gray;
