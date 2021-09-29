@@ -32,10 +32,10 @@ ul li a {
         'header header'
         'aside content'
         'footer footer';
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 281px 1fr;
     grid-template-rows: 48px 1fr 100px;
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 32px;
     padding-left: 32px;
     padding-right: 40px;
@@ -147,7 +147,14 @@ ul li a {
 /* MAIN SECTION STYLES */
 .main {
     grid-area: content;
-    background: blue;
+    border: 1px solid black;
+    margin-right: 90px;
+}
+
+.main__banner {
+    width: 1038px;
+    height: 335px;
+    background: url(../assets/img/main-banner.jpg);
 }
 
 /* FOOTER STYLES */
