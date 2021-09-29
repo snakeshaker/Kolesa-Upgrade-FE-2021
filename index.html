@@ -14,8 +14,31 @@
     <!-- <div id="app"></div>
     <script type="module" src="/src/js/main.js"></script> -->
     <div class="content-container">
-        <header>
-
+        <header class="header">
+            <div class="header__logo">
+                <img src="src/assets/svg/kolesa-logo.svg" alt="Logo">
+            </div>
+            <form action="" class="header__form">
+                <label for="search" class="header__search">
+                    <button type="button" class="header__search__icon">
+                        <img src="src/assets/svg/search-big.svg" alt="Search">
+                    </button>
+                    <input id="search" type="text" placeholder="Поиск">
+                </label>
+            </form>
+            <a class="user-block">
+                <div class="user-block__avatar">
+                    <img src="src/assets/img/avatar.png" alt="User avatar">
+                </div>
+                <div class="user-block__info">
+                    <div class="user-block__name">
+                        Мортиджан
+                    </div>
+                    <div class="user-block__points">
+                        300 баллов
+                    </div>
+                </div>
+            </a>
         </header>
         <aside class="aside">
             <nav class="aside__nav">
@@ -50,10 +73,10 @@
                 </ul>
             </nav>
         </aside>
-        <main>
+        <main class="main">
 
         </main>
-        <footer>
+        <footer class="footer">
 
         </footer>
     </div>

@@ -16,6 +16,46 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+ul li {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
 .content-container {
     max-width: 1440px;
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'aside content'
+        'footer footer';
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 150px 1fr 100px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    background: yellow;
+}
+
+.aside {
+    grid-area: aside;
+    background: gray;
+    align-self: flex-start;
+}
+
+.main {
+    grid-area: content;
+    background: blue;
+}
+
+.footer {
+    grid-area: footer;
+    background: red;
+    height: 30px;
+    align-self: flex-end;
 }
