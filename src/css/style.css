@@ -77,6 +77,7 @@ ul li a {
 .header__search__icon:hover,
 .header__search__icon:focus {
     transform: scale(1.2);
+    outline: none;
 }
 
 .header__search__icon:active {
@@ -88,11 +89,17 @@ ul li a {
     background-color: transparent;
     font-size: 18px;
     margin-left: 16px;
+    width: 100%;
+    margin-right: 8px;
 }
 
 .header__search input:focus,
 .header__search input:active {
-    outline-color: #2a81dd;
+    outline: none;
+}
+
+.header__search:focus-within {
+    border: 1px solid #2a81dd;
 }
 
 .header__search input::placeholder {
