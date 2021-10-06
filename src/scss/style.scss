@@ -42,9 +42,15 @@ label {
     position: relative;
 }
 
-input[type='radio']:checked + label {
-    background: $radio-color;
-    color: $black;
+input[type='radio'] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+
+    &:checked + label {
+        background: $radio-color;
+        color: $black;
+    }
 }
 
 .content-container {
