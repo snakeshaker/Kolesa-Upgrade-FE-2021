@@ -4,15 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <title>Vite App</title>
   </head>
   <body>
-    <!-- <div id="app"></div>
-    <script type="module" src="/src/js/main.js"></script> -->
     <div class="content-container">
         <header class="header">
             <div class="header__logo">
@@ -20,7 +17,7 @@
             </div>
             <form action="" class="header__form">
                 <label for="search" class="header__search">
-                    <button type="button" class="header__search__icon">
+                    <button type="button">
                         <img src="src/assets/svg/search-big.svg" alt="Search">
                     </button>
                     <input id="search" type="text" placeholder="Поиск">
@@ -45,7 +42,7 @@
                         <a href="">Оргсхема</a>
                     </li>
                     <li>
-                        <a href="">Kolesa <span class="nav-bold">Team</span></a>
+                        <a href="">Kolesa <span class="aside__nav--bold">Team</span></a>
                     </li>
                     <li class="aside__nav--active">
                         <a href="">Kolesa Shop</a>
@@ -74,7 +71,7 @@
         <main class="main">
             <div class="main__banner"></div>
             <div class="points">
-                <a class="points__block points__block__green">
+                <a class="points__block points__block--green">
                     <div class="points__icon">
                         <img src="src/assets/svg/points-plus.svg" alt="plus">
                     </div>
@@ -82,7 +79,7 @@
                         Получить баллы
                     </div>
                 </a>
-                <a class="points__block points__block__yelow">
+                <a class="points__block points__block--yellow">
                     <div class="points__icon">
                         <img src="src/assets/svg/points-question.svg" alt="question">
                     </div>
@@ -90,7 +87,7 @@
                         Как получить баллы
                     </div>
                 </a>
-                <a class="points__block points__block__blue">
+                <a class="points__block points__block--blue">
                     <div class="points__icon">
                         <img src="src/assets/svg/points-present.svg" alt="present">
                     </div>
@@ -99,245 +96,245 @@
                     </div>
                 </a>
             </div>
-            <div class="main__item__filter">
+            <div class="main__item-filter">
                 <input type="radio" id="item_all" name="item-selector">
-                <label class="item-label" for="item_all">Все товары</label>
+                <label for="item_all">Все товары</label>
                 <input type="radio" id="item_clothes" name="item-selector">
-                <label class="item-label" for="item_clothes">Одежда</label>
+                <label for="item_clothes">Одежда</label>
                 <input type="radio" id="item_accessories" name="item-selector">
-                <label class="item-label" for="item_accessories">Аксессуары</label>
+                <label for="item_accessories">Аксессуары</label>
             </div>
-            <div class="item-block">
-                <div class="item-block__item">
-                    <div class="item-block__img">
+            <div class="catalog">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
-                        <div class="item-block__new">
+                        <div class="catalog__new">
                             New
                         </div>
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Футболка "Эволюционируй или ...
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
-                        <div class="item-block__new">
+                        <div class="catalog__new">
                             New
                         </div>
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Футболка "Эволюционируй или ...
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Футболка "Эволюционируй или ...
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
                 </div>
-                <div class="item-block__item">
-                    <div class="item-block__img">
+                <div class="catalog__item">
+                    <div class="catalog__img">
                         <img src="src/assets/img/item-img.png" alt="item">
                     </div>
-                    <div class="item-block__info">
-                        <div class="item-block__price">
+                    <div class="catalog__info">
+                        <div class="catalog__price">
                             220 баллов
                         </div>
-                        <div class="item-block__name">
+                        <div class="catalog__name">
                             Свитшот
                         </div>
-                        <div class="item-block__size">
+                        <div class="catalog__size">
                             Размеры S/M/L
                         </div>
-                        <button class="item-block__btn" type="button">
+                        <button class="catalog__btn" type="button">
                             Заказать
                         </button>
                     </div>
@@ -346,12 +343,12 @@
         </main>
     </div>
     <footer class="footer">
-        <div class="wrapper">
+        <div class="footer__wrapper">
             <div class="footer__socials">
                 <div class="footer__credit">
                     © Kolesa Group
                 </div>
-                <ul class="footer__socials__icons">
+                <ul>
                     <li><a href="https://www.instagram.com/kolesagroup/" target="_blank">
                         <img src="src/assets/svg/social-instagram.svg" alt="Instagram">
                     </a></li>
@@ -374,5 +371,6 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>

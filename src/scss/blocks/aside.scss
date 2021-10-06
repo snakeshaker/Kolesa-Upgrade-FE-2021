@@ -1,0 +1,38 @@
+.aside {
+    grid-area: aside;
+    align-self: flex-start;
+    margin-top: 32px;
+}
+
+.aside__nav ul li {
+    margin-bottom: 26px;
+    position: relative;
+}
+
+.aside__nav--active {
+    position: relative;
+    font-weight: bold;
+}
+
+.aside__nav--active::before {
+    content: '';
+    width: 4px;
+    height: 36px;
+    background: #2a81dd;
+    border-radius: 10px;
+    position: absolute;
+    left: -12px;
+    top: -6px;
+}
+
+.aside__nav--bold {
+    font-weight: bold;
+}
+
+.aside__nav ul li a {
+    transition: all 0.1s ease;
+}
+
+.aside__nav ul li a:hover {
+    font-weight: bold;
+}

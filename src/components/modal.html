@@ -4,82 +4,80 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <title>Vite App</title>
     </head>
     <body>
-        <!-- <div id="app"></div>
-        <script type="module" src="/src/js/main.js"></script> -->
         <div class="card-container">
             <div class="card">
                 <button class="card__close" type="button"></button>
-                <div class="card__image">
-                    <img src="../assets/img/big-img.png" alt="main image" class="card__image__big">
-                    <div class="card__image__little">
-                        <div class="card__image__litlle__elem">
+                <div class="card__images">
+                    <img src="../assets/img/big-img.png" alt="main image" class="card__images--big">
+                    <div class="card__little-images">
+                        <div class="card__images--little">
                             <img src="../assets/img/little-image1.png" alt="little image">
                         </div>
-                        <div class="card__image__litlle__elem">
-                            <img class="card-image-active" src="../assets/img/little-image2.png" alt="little image">
+                        <div class="card__images--little">
+                            <img class="card__images--active" src="../assets/img/little-image2.png" alt="little image">
                         </div>
-                        <div class="card__image__litlle__elem">
+                        <div class="card__images--little">
                             <img src="../assets/img/little-image3.png" alt="little image">
                         </div>
                     </div>
                 </div>
                 <form class="card__info">
-                    <div class="card__info__top">
-                        <h3>Футболка "Эволюционируй или сдохни"</h3>
-                        <p class="card__info__top__price">100 баллов</p>
-                        <button class="button" type="submit">
+                    <div class="card__top">
+                        <h3 class="card__title">Футболка "Эволюционируй или сдохни"</h3>
+                        <p class="card__price">100 баллов</p>
+                        <button class="card__button" type="submit">
                             Заказать
                         </button>
-                        <div class="balance">
-                            <div class="balance__info">
-                                <p>Твой баланс:</p>
-                                <p class="balance__info__sum">3 945 баллов</p>
+                        <div class="card__balance">
+                            <div class="card__balance-info">
+                                <p class="card__balance-info--gray">Твой баланс:</p>
+                                <p class="card__sum">3 945 баллов</p>
                             </div>
-                            <div class="balance__logo"></div>
+                            <div class="card__logo"></div>
                         </div>
                     </div>
-                    <div class="card__info__bottom">
-                        <p class="heading">Цвета:</p>
-                        <div class="radio-group">
+                    <div class="card__bottom">
+                        <p class="card__heading">Цвета:</p>
+                        <div class="card__radio-group">
                             <input type="radio" id="color-blue" name="color-selector">
-                            <label class="color-label" for="color-blue">
-                                <div class="square square-blue"></div>
+                            <label class="card__radio-group--color" for="color-blue">
+                                <div class="card__square card__square--blue"></div>
                                 Синий
                             </label>
                             <input type="radio" id="color-beige" name="color-selector">
-                            <label class="color-label" for="color-beige">
-                                <div class="square square-beige"></div>
+                            <label class="card__radio-group--color" for="color-beige">
+                                <div class="card__square card__square--beige"></div>
                                 Бежевый
                             </label>
                             <input type="radio" id="color-gray" name="color-selector">
-                            <label class="color-label" for="color-gray">
-                                <div class="square square-gray"></div>
+                            <label class="card__radio-group--color" for="color-gray">
+                                <div class="card__square card__square--gray"></div>
                                 Серый
                             </label>
                         </div>
-                        <p class="heading">Размер:</p>
-                        <div class="radio-group">
+                        <p class="card__heading">Размер:</p>
+                        <div class="card__radio-group">
                             <input type="radio" id="size-s" name="size-selector">
-                            <label class="size-label" for="size-s">S</label>
+                            <label class="card__radio-group--size" for="size-s">S</label>
                             <input type="radio" id="size-m" name="size-selector">
-                            <label class="size-label" for="size-m">M</label>
+                            <label class="card__radio-group--size" for="size-m">M</label>
                             <input type="radio" id="size-l" name="size-selector">
-                            <label class="size-label" for="size-l">L</label>
+                            <label class="card__radio-group--size" for="size-l">L</label>
                         </div>
-                        <p class="heading heading-bold">Детали:</p>
+                        <p class="card__heading card__heading--bold">Детали:</p>
                         <p>Брендированная толстовка от Qazaq Republic. Материал: Хлопок 80%, Вискоза 20%</p>
-                        <p class="heading heading-bold">Как выбрать размер:</p>
+                        <p class="card__heading card__heading--bold">Как выбрать размер:</p>
                         <p>Написать дяде Рику для уточнения.</p>
                     </div>
                 </form>
             </div>
         </div>
+        <script type="module" src="/src/js/main.js"></script>
     </body>
 </html>

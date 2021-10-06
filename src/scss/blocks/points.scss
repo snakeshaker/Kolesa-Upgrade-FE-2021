@@ -1,0 +1,65 @@
+.points {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    -webkit-gap: 24px;
+    -moz-gap: 24px;
+    -ms-gap: 24px;
+    -o-gap: 24px;
+    gap: 24px;
+    height: 76px;
+}
+
+.points__block {
+    padding: 10px 26px 10px 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 32px;
+    width: 100%;
+}
+
+.points__info {
+    margin-left: 16px;
+}
+
+.points__block--green {
+    background: #eff8eb;
+    transition: all 0.3s ease;
+}
+
+.points__block--green:hover {
+    background: #8da184;
+    transition: all 0.2s ease-in-out;
+}
+
+.points__block--yellow {
+    background: #fffae7;
+    transition: all 0.3s ease;
+}
+
+.points__block--yelow:hover {
+    background: #b8b094;
+    transition: all 0.2s ease-in-out;
+}
+
+.points__block--blue {
+    background: #e9f2fb;
+    transition: all 0.3s ease;
+}
+
+.points__block--blue:hover {
+    background: #8f9faf;
+    transition: all 0.2s ease-in-out;
+}
+
+.points__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 56px;
+}
