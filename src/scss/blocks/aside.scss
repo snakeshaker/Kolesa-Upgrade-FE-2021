@@ -1,0 +1,40 @@
+.aside {
+    grid-area: aside;
+    align-self: flex-start;
+    padding-top: 32px;
+
+    &__nav {
+        li {
+            margin-bottom: 26px;
+            position: relative;
+        }
+
+        &--active {
+            position: relative;
+            font-weight: bold;
+
+            &::before {
+                content: '';
+                width: 4px;
+                height: 36px;
+                background: $blue;
+                border-radius: 10px;
+                position: absolute;
+                left: -12px;
+                top: -6px;
+            }
+        }
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+
+    &__nav-link {
+        transition: all 0.1s ease;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}

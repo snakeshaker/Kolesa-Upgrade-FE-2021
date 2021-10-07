@@ -1,0 +1,86 @@
+@import '../scss/vars.scss';
+@import '../scss/mixins.scss';
+@import '../scss/blocks/header.scss';
+@import '../scss/blocks/user-block.scss';
+@import '../scss/blocks/aside.scss';
+@import '../scss/blocks/main.scss';
+@import '../scss/blocks/points.scss';
+@import '../scss/blocks/catalog.scss';
+@import '../scss/blocks/footer.scss';
+@import '../scss/blocks/modal-card.scss';
+@import '../scss/blocks/search.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    color: $black;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    display: inline-block;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid $shadow-color;
+    color: $blue;
+    border-radius: 8px;
+    position: relative;
+}
+
+input {
+    &[type='radio'] {
+        position: absolute;
+        visibility: hidden;
+        display: none;
+
+        &:checked {
+            & + label {
+                background: $radio-color;
+                color: $black;
+            }
+        }
+    }
+}
+
+.content-container {
+    max-width: 1440px;
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'aside content';
+    grid-template-columns: 281px auto;
+    grid-template-rows: 48px auto;
+    margin: 0 auto;
+    padding-top: 32px;
+    padding-left: 32px;
+    padding-right: 40px;
+    line-height: 24px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    color: $black;
+    font-size: 14px;
+    line-height: 24px;
+    backdrop-filter: brightness(40%);
+}
