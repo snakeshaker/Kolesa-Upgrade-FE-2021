@@ -9,6 +9,8 @@
     padding-bottom: 192px;
     padding-top: 16px;
 
+    $root: &;
+
     &__img {
         display: flex;
         position: relative;
@@ -86,11 +88,11 @@
             cursor: pointer;
             margin-bottom: -42px;
 
-            & .catalog__btn {
+            #{$root}__btn {
                 display: block;
             }
 
-            & .catalog__price {
+            #{$root}__price {
                 color: $red;
             }
         }
