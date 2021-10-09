@@ -139,6 +139,15 @@ const makeProductCard = (isNew, title, price, img) => `<div class="catalog__item
     </div>
 </div>`;
 
+allItems.forEach((card) => {
+    const {
+        isNew, title, price, img,
+    } = card;
+    const cardHtml = makeProductCard(isNew, title, price, img);
+
+    document.querySelector('.js__catalog').innerHTML += cardHtml;
+});
+
 document.body.addEventListener('change', (e) => {
     const { target } = e;
 
