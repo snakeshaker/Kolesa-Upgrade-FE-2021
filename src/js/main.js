@@ -59,6 +59,57 @@ for (let i = 0; i < clothes.length; i += 1) {
     }
 }
 
+const accessories = [
+    {
+        id:    7,
+        isNew: true,
+        title: 'Фирменный рюкзак',
+        price: 290,
+        img:   'src/assets/img/backpack-img.png',
+    },
+    {
+        id:    8,
+        isNew: false,
+        title: 'Синяя кружка',
+        price: 270,
+        img:   'src/assets/img/mug-img.jpg',
+    },
+    {
+        id:    9,
+        isNew: false,
+        title: 'Бутылка для воды',
+        price: 180,
+        img:   'src/assets/img/bottle-img.png',
+    },
+    {
+        id:    10,
+        isNew: true,
+        title: 'Подставка под клавиатуру',
+        price: 220,
+        img:   'src/assets/img/keyrest-img.jpg',
+    },
+    {
+        id:    11,
+        isNew: false,
+        title: 'Нож-брелок',
+        price: 150,
+        img:   'src/assets/img/knife-img.jpeg',
+    },
+    {
+        id:    12,
+        isNew: false,
+        title: 'Коврик для мышки',
+        price: 300,
+        img:   'src/assets/img/mousepad-img.jpg',
+    },
+];
+
+for (let i = 0; i < accessories.length; i += 1) {
+    if (accessories[i].isNew === true) {
+        accessories.unshift(accessories.splice(i, 1)[0]);
+    }
+}
+
 const makeProductCard = (isNew, title, price, img) => `<div class="catalog__item">
     <div class="catalog__img">
         <img src="${img}" alt="item">
