@@ -2,7 +2,7 @@
     border: 1px solid $card-border;
     max-width: 1040px;
     overflow-y: auto;
-    background: $white;
+    background: $full-white;
     border-radius: 16px;
 
     &__wrapper {
@@ -177,5 +177,13 @@
         &--gray {
             background: $modal-gray;
         }
+    }
+
+    &__overlay {
+        z-index: -1;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100vw;
+        height: 100vh;
     }
 }

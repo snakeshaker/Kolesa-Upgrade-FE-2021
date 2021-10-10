@@ -118,9 +118,12 @@ for (let i = 0; i < allItems.length; i += 1) {
     }
 }
 
-const makeProductCard = (isNew, title, price, img) => `<div class="catalog__item">
-    <div class="catalog__img">
-        <img src="${img}" alt="item" width="330" height="330">
+function addItem(isNew, title, price, img) {
+    const newDiv = document.createElement('DIV');
+
+    newDiv.classList.add('catalog__item');
+    newDiv.innerHTML = `<div class="catalog__img">
+        <img class="js__img" src="${img}" alt="item" width="330" height="330">
         ${isNew ? '<div class="catalog__new">New</div>' : ''}
     </div>
     <div class="catalog__info">
@@ -136,16 +139,18 @@ const makeProductCard = (isNew, title, price, img) => `<div class="catalog__item
         <button class="catalog__btn" type="button">
             Заказать
         </button>
-    </div>
-</div>`;
+    </div>`;
+
+    return newDiv;
+}
 
 allItems.forEach((card) => {
     const {
         isNew, title, price, img,
     } = card;
-    const cardHtml = makeProductCard(isNew, title, price, img);
+    const cardCreate = addItem(isNew, title, price, img);
 
-    document.querySelector('.js__catalog').innerHTML += cardHtml;
+    document.querySelector('.js__catalog').append(cardCreate);
 });
 
 document.body.addEventListener('change', (e) => {
@@ -158,9 +163,9 @@ document.body.addEventListener('change', (e) => {
                 const {
                     isNew, title, price, img,
                 } = card;
-                const cardHtml = makeProductCard(isNew, title, price, img);
+                const cardCreate = addItem(isNew, title, price, img);
 
-                document.querySelector('.js__catalog').innerHTML += cardHtml;
+                document.querySelector('.js__catalog').append(cardCreate);
             });
             break;
         case 'item_accessories':
@@ -169,9 +174,9 @@ document.body.addEventListener('change', (e) => {
                 const {
                     isNew, title, price, img,
                 } = card;
-                const cardHtml = makeProductCard(isNew, title, price, img);
+                const cardCreate = addItem(isNew, title, price, img);
 
-                document.querySelector('.js__catalog').innerHTML += cardHtml;
+                document.querySelector('.js__catalog').append(cardCreate);
             });
             break;
         default:
@@ -180,10 +185,50 @@ document.body.addEventListener('change', (e) => {
                 const {
                     isNew, title, price, img,
                 } = card;
-                const cardHtml = makeProductCard(isNew, title, price, img);
+                const cardCreate = addItem(isNew, title, price, img);
 
-                document.querySelector('.js__catalog').innerHTML += cardHtml;
+                document.querySelector('.js__catalog').append(cardCreate);
             });
             break;
     }
 });
+
+// MODAL WINDOW CODE
+const closeModalButton = document.querySelector('.card__close');
+const modalContainer = document.querySelector('.card-container');
+const overlay = document.querySelector('.card__overlay');
+
+function openModal() {
+    modalContainer.classList.add('open');
+}
+
+function closeModal() {
+    modalContainer.classList.remove('open');
+}
+
+overlay.addEventListener('click', () => {
+    closeModal();
+});
+
+closeModalButton.addEventListener('click', () => {
+    closeModal();
+});
+
+function hasClass(elem, className) {
+    return elem.classList.contains(className);
+}
+
+document.addEventListener('click', (e) => {
+    if (
+        hasClass(e.target, 'js__img')
+        || hasClass(e.target, 'catalog__new')
+        || hasClass(e.target, 'catalog__info')
+        || hasClass(e.target, 'catalog__price')
+        || hasClass(e.target, 'catalog__name')
+        || hasClass(e.target, 'catalog__size')
+        || hasClass(e.target, 'catalog__btn')
+    ) {
+        modalContainer.style.transition = 'all 0.2s ease-in';
+        openModal();
+    }
+}, false);
