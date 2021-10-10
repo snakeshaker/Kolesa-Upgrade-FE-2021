@@ -222,9 +222,7 @@ document.body.addEventListener('change', (e) => {
 });
 
 // MODAL WINDOW CODE
-const closeModalButton = document.querySelector('.card__close');
 const modalContainer = document.querySelector('.card-container');
-const overlay = document.querySelector('.card__overlay');
 
 function changeModal(title, price, img, isClothes, details) {
     modalContainer.innerHTML = `<div class="card">
@@ -299,7 +297,8 @@ function changeModal(title, price, img, isClothes, details) {
             </div>
         </form>
     </div>
-</div>`;
+</div>
+<div class="card__overlay"></div>`;
 }
 
 function openModal() {
@@ -309,14 +308,6 @@ function openModal() {
 function closeModal() {
     modalContainer.classList.remove('open');
 }
-
-overlay.addEventListener('click', () => {
-    closeModal();
-});
-
-closeModalButton.addEventListener('click', () => {
-    closeModal();
-});
 
 function hasClass(elem, className) {
     return elem.classList.contains(className);
@@ -340,5 +331,7 @@ document.addEventListener('click', (e) => {
         }
         modalContainer.style.transition = 'all 0.2s ease-in';
         openModal();
+    } else if (hasClass(e.target, 'card__overlay') || hasClass(e.target, 'card__close')) {
+        closeModal();
     }
 }, false);
