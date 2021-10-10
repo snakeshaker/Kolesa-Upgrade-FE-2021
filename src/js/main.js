@@ -207,7 +207,7 @@ document.body.addEventListener('change', (e) => {
                 document.querySelector('.js__catalog').append(cardCreate);
             });
             break;
-        default:
+        case 'item_all':
             document.querySelector('.js__catalog').innerHTML = '';
             allItems.forEach((card) => {
                 const {
@@ -218,6 +218,7 @@ document.body.addEventListener('change', (e) => {
                 document.querySelector('.js__catalog').append(cardCreate);
             });
             break;
+        default: break;
     }
 });
 
