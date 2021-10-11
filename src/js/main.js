@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
 import '../scss/style.scss';
 import { clothes, accessories } from './mock-catalog';
@@ -31,7 +32,7 @@ function addItem(
 
     if (newDiv) {
         newDiv.classList.add('catalog__item');
-        newDiv.classList.add(`${id}`);
+        newDiv.setAttribute('data-id', `${id}`);
         newDiv.innerHTML = `<div class="catalog__img">
         <img class="js__img" src="${img}" alt="item" width="330" height="330">
         ${isNew ? '<div class="catalog__new">New</div>' : ''}
@@ -63,7 +64,7 @@ function renderCatalog(catalogFilter) {
         } = card;
         const cardCreate = addItem(isNew, title, price, img, isClothes, id);
 
-        if (document.body.contains(catalog)) {
+        if (catalog) {
             catalog.append(cardCreate);
         }
     });
@@ -77,21 +78,21 @@ for (let i = 0; i < filterChange.length; i++) {
 
         switch (target.id) {
             case 'item_clothes':
-                if (document.body.contains(catalog)) {
+                if (catalog) {
                     catalog.innerHTML = '';
                 }
 
                 renderCatalog(clothes);
                 break;
             case 'item_accessories':
-                if (document.body.contains(catalog)) {
+                if (catalog) {
                     catalog.innerHTML = '';
                 }
 
                 renderCatalog(accessories);
                 break;
             case 'item_all':
-                if (document.body.contains(catalog)) {
+                if (catalog) {
                     catalog.innerHTML = '';
                 }
 
@@ -201,25 +202,23 @@ function hasClass(elem, className) {
     return elem.classList.contains(className);
 }
 
-document.addEventListener('click', (e) => {
-    if (
-        hasClass(e.target, 'js__img')
-        || hasClass(e.target, 'catalog__new')
-        || hasClass(e.target, 'catalog__info')
-        || hasClass(e.target, 'catalog__price')
-        || hasClass(e.target, 'catalog__name')
-        || hasClass(e.target, 'catalog__size')
-        || hasClass(e.target, 'catalog__btn')
-    ) {
+catalog.addEventListener('click', (e) => {
+    const item = e.target.closest('.catalog__item');
+
+    if (item) {
         for (let i = 0; i < allItems.length; i++) {
-            if (e.target.closest('.catalog__item').classList.contains(allItems[i].id)) {
+            if (item.dataset.id == allItems[i].id) {
                 // eslint-disable-next-line max-len
                 changeModal(allItems[i].title, allItems[i].price, allItems[i].img, allItems[i].isClothes, allItems[i].details);
             }
         }
         modalContainer.style.transition = 'all 0.2s ease-in';
         openModal();
-    } else if (hasClass(e.target, 'card__overlay') || hasClass(e.target, 'card__close')) {
-        closeModal();
     }
 }, false);
+
+modalContainer.addEventListener('click', (e) => {
+    if (hasClass(e.target, 'card__overlay') || hasClass(e.target, 'card__close')) {
+        closeModal();
+    }
+});
