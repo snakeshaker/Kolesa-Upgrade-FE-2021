@@ -172,14 +172,18 @@ function addItem(isNew, title, price, img, isClothes, id) {
     return newDiv;
 }
 
-allItems.forEach((card) => {
-    const {
-        isNew, title, price, img, isClothes, id,
-    } = card;
-    const cardCreate = addItem(isNew, title, price, img, isClothes, id);
+function renderCatalog(catalogFilter) {
+    catalogFilter.forEach((card) => {
+        const {
+            isNew, title, price, img, isClothes, id,
+        } = card;
+        const cardCreate = addItem(isNew, title, price, img, isClothes, id);
 
-    document.querySelector('.js__catalog').append(cardCreate);
-});
+        document.querySelector('.js__catalog').append(cardCreate);
+    });
+}
+
+renderCatalog(allItems);
 
 document.body.addEventListener('change', (e) => {
     const { target } = e;
@@ -187,36 +191,15 @@ document.body.addEventListener('change', (e) => {
     switch (target.id) {
         case 'item_clothes':
             document.querySelector('.js__catalog').innerHTML = '';
-            clothes.forEach((card) => {
-                const {
-                    isNew, title, price, img, isClothes, id,
-                } = card;
-                const cardCreate = addItem(isNew, title, price, img, isClothes, id);
-
-                document.querySelector('.js__catalog').append(cardCreate);
-            });
+            renderCatalog(clothes);
             break;
         case 'item_accessories':
             document.querySelector('.js__catalog').innerHTML = '';
-            accessories.forEach((card) => {
-                const {
-                    isNew, title, price, img, isClothes, id,
-                } = card;
-                const cardCreate = addItem(isNew, title, price, img, isClothes, id);
-
-                document.querySelector('.js__catalog').append(cardCreate);
-            });
+            renderCatalog(accessories);
             break;
         case 'item_all':
             document.querySelector('.js__catalog').innerHTML = '';
-            allItems.forEach((card) => {
-                const {
-                    isNew, title, price, img, isClothes, id,
-                } = card;
-                const cardCreate = addItem(isNew, title, price, img, isClothes, id);
-
-                document.querySelector('.js__catalog').append(cardCreate);
-            });
+            renderCatalog(allItems);
             break;
         default: break;
     }
