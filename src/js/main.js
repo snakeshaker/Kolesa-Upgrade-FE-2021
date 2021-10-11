@@ -67,12 +67,6 @@ const clothes = [
     },
 ];
 
-for (let i = 0; i < clothes.length; i += 1) {
-    if (clothes[i].isNew === true) {
-        clothes.unshift(clothes.splice(i, 1)[0]);
-    }
-}
-
 const accessories = [
     {
         id:        7,
@@ -130,19 +124,19 @@ const accessories = [
     },
 ];
 
-for (let i = 0; i < accessories.length; i += 1) {
-    if (accessories[i].isNew === true) {
-        accessories.unshift(accessories.splice(i, 1)[0]);
+function sortNew(arr) {
+    for (let i = 0; i < arr.length; i += 1) {
+        if (arr[i].isNew === true) {
+            arr.unshift(arr.splice(i, 1)[0]);
+        }
     }
 }
+sortNew(clothes);
+sortNew(accessories);
 
 const allItems = [...clothes, ...accessories];
 
-for (let i = 0; i < allItems.length; i += 1) {
-    if (allItems[i].isNew === true) {
-        allItems.unshift(allItems.splice(i, 1)[0]);
-    }
-}
+sortNew(allItems);
 
 function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClothes, id) {
     const newDiv = document.createElement('DIV');
