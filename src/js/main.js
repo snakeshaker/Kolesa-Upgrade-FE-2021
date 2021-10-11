@@ -185,25 +185,29 @@ function renderCatalog(catalogFilter) {
 
 renderCatalog(allItems);
 
-document.body.addEventListener('change', (e) => {
-    const { target } = e;
+const filterChange = document.querySelectorAll('.js__filter');
 
-    switch (target.id) {
-        case 'item_clothes':
-            document.querySelector('.js__catalog').innerHTML = '';
-            renderCatalog(clothes);
-            break;
-        case 'item_accessories':
-            document.querySelector('.js__catalog').innerHTML = '';
-            renderCatalog(accessories);
-            break;
-        case 'item_all':
-            document.querySelector('.js__catalog').innerHTML = '';
-            renderCatalog(allItems);
-            break;
-        default: break;
-    }
-});
+for (let i = 0; i < filterChange.length; i += 1) {
+    filterChange[i].addEventListener('change', (e) => {
+        const { target } = e;
+
+        switch (target.id) {
+            case 'item_clothes':
+                document.querySelector('.js__catalog').innerHTML = '';
+                renderCatalog(clothes);
+                break;
+            case 'item_accessories':
+                document.querySelector('.js__catalog').innerHTML = '';
+                renderCatalog(accessories);
+                break;
+            case 'item_all':
+                document.querySelector('.js__catalog').innerHTML = '';
+                renderCatalog(allItems);
+                break;
+            default: break;
+        }
+    });
+}
 
 // MODAL WINDOW CODE
 const modalContainer = document.querySelector('.card-container');
