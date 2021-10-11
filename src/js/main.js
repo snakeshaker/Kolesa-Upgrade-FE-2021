@@ -97,80 +97,82 @@ for (let i = 0; i < filterChange.length; i++) {
 // MODAL WINDOW CODE
 
 function changeModal(title, price, img = 'src/assets/img/no-photo.jpg', isClothes, details) {
-    modalContainer.innerHTML = `<div class="card">
-    <div class="card__wrapper">
-        <button class="card__close" type="button"></button>
-        <div class="card__images">
-            <img src="${img}" alt="main image" class="card__images--big">
-            <div class="card__little-images">
-                <div class="card__images--little">
-                    <img class="card__images--active" src="${img}" alt="little image" width="50" height="50">
-                </div>
-            </div>
-        </div>
-        <form class="card__info">
-            <div class="card__top">
-                <h3 class="card__title">${title}</h3>
-                <p class="card__price">${price} баллов</p>
-                <button class="card__button" type="submit">
-                    Заказать
-                </button>
-                <div class="card__balance">
-                    <div class="card__balance-info">
-                        <p class="card__balance-info--gray">Твой баланс:</p>
-                        <p class="card__sum">3 945 баллов</p>
+    if (modalContainer) {
+        modalContainer.innerHTML = `<div class="card">
+        <div class="card__wrapper">
+            <button class="card__close" type="button"></button>
+            <div class="card__images">
+                <img src="${img}" alt="main image" class="card__images--big">
+                <div class="card__little-images">
+                    <div class="card__images--little">
+                        <img class="card__images--active" src="${img}" alt="little image" width="50" height="50">
                     </div>
-                    <div class="card__logo"></div>
                 </div>
             </div>
-            <div class="card__bottom">
-                ${isClothes ? `<p class="card__heading">Цвета:</p>
-                <div class="card__radio-group">
-                    <input type="radio" id="color-blue" name="color-selector">
-                    <label class="card__radio-group--color" for="color-blue">
-                        <div class="card__square card__square--blue"></div>
-                        Синий
-                    </label>
-                    <input type="radio" id="color-beige" name="color-selector">
-                    <label class="card__radio-group--color" for="color-beige">
-                        <div class="card__square card__square--beige"></div>
-                        Бежевый
-                    </label>
-                    <input type="radio" id="color-gray" name="color-selector">
-                    <label class="card__radio-group--color" for="color-gray">
-                        <div class="card__square card__square--gray"></div>
-                        Серый
-                    </label>
+            <form class="card__info">
+                <div class="card__top">
+                    <h3 class="card__title">${title}</h3>
+                    <p class="card__price">${price} баллов</p>
+                    <button class="card__button" type="submit">
+                        Заказать
+                    </button>
+                    <div class="card__balance">
+                        <div class="card__balance-info">
+                            <p class="card__balance-info--gray">Твой баланс:</p>
+                            <p class="card__sum">3 945 баллов</p>
+                        </div>
+                        <div class="card__logo"></div>
+                    </div>
                 </div>
-                <p class="card__heading">Размер:</p>
-                <div class="card__radio-group">
-                    <input type="radio" id="size-s" name="size-selector">
-                    <label class="card__radio-group--size" for="size-s">S</label>
-                    <input type="radio" id="size-m" name="size-selector">
-                    <label class="card__radio-group--size" for="size-m">M</label>
-                    <input type="radio" id="size-l" name="size-selector">
-                    <label class="card__radio-group--size" for="size-l">L</label>
+                <div class="card__bottom">
+                    ${isClothes ? `<p class="card__heading">Цвета:</p>
+                    <div class="card__radio-group">
+                        <input type="radio" id="color-blue" name="color-selector">
+                        <label class="card__radio-group--color" for="color-blue">
+                            <div class="card__square card__square--blue"></div>
+                            Синий
+                        </label>
+                        <input type="radio" id="color-beige" name="color-selector">
+                        <label class="card__radio-group--color" for="color-beige">
+                            <div class="card__square card__square--beige"></div>
+                            Бежевый
+                        </label>
+                        <input type="radio" id="color-gray" name="color-selector">
+                        <label class="card__radio-group--color" for="color-gray">
+                            <div class="card__square card__square--gray"></div>
+                            Серый
+                        </label>
+                    </div>
+                    <p class="card__heading">Размер:</p>
+                    <div class="card__radio-group">
+                        <input type="radio" id="size-s" name="size-selector">
+                        <label class="card__radio-group--size" for="size-s">S</label>
+                        <input type="radio" id="size-m" name="size-selector">
+                        <label class="card__radio-group--size" for="size-m">M</label>
+                        <input type="radio" id="size-l" name="size-selector">
+                        <label class="card__radio-group--size" for="size-l">L</label>
+                    </div>
+                    <p class="card__heading card__heading--bold">Детали:</p>
+                    <p>${details}</p>
+                    <p class="card__heading card__heading--bold">Как выбрать размер:</p>
+                    <p>Написать дяде Рику для уточнения.</p>`
+            : `<p class="card__heading">Объем:</p>
+                    <div class="card__radio-group">
+                        <input type="radio" id="size-s" name="size-selector">
+                        <label class="card__radio-group--size" for="size-s">0,5л</label>
+                        <input type="radio" id="size-m" name="size-selector">
+                        <label class="card__radio-group--size" for="size-m">0,7л</label>
+                        <input type="radio" id="size-l" name="size-selector">
+                        <label class="card__radio-group--size" for="size-l">1,0л</label>
+                    </div>
+                    <p class="card__heading card__heading--bold">Детали:</p>
+                    <p>${details}</p>`}
                 </div>
-                <p class="card__heading card__heading--bold">Детали:</p>
-                <p>${details}</p>
-                <p class="card__heading card__heading--bold">Как выбрать размер:</p>
-                <p>Написать дяде Рику для уточнения.</p>`
-        : `<p class="card__heading">Объем:</p>
-                <div class="card__radio-group">
-                    <input type="radio" id="size-s" name="size-selector">
-                    <label class="card__radio-group--size" for="size-s">0,5л</label>
-                    <input type="radio" id="size-m" name="size-selector">
-                    <label class="card__radio-group--size" for="size-m">0,7л</label>
-                    <input type="radio" id="size-l" name="size-selector">
-                    <label class="card__radio-group--size" for="size-l">1,0л</label>
-                </div>
-                <p class="card__heading card__heading--bold">Детали:</p>
-                <p>${details}</p>`}
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div class="card__overlay"></div>`;
+    <div class="card__overlay"></div>`;
+    }
 }
 
 function openModal() {
