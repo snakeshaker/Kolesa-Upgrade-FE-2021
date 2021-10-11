@@ -14,11 +14,19 @@ function sortNew(arr) {
         }
     }
 }
+
 sortNew(clothes);
 sortNew(accessories);
 sortNew(allItems);
 
-function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClothes, id) {
+function addItem(
+    isNew = false,
+    title = 'Товар',
+    price = '0',
+    img = 'src/assets/img/no-photo.jpg',
+    isClothes = false,
+    id = allItems.length,
+) {
     const newDiv = document.createElement('DIV');
 
     if (newDiv) {
@@ -96,7 +104,13 @@ for (let i = 0; i < filterChange.length; i++) {
 
 // MODAL WINDOW CODE
 
-function changeModal(title, price, img = 'src/assets/img/no-photo.jpg', isClothes, details) {
+function changeModal(
+    title = 'Товар',
+    price = '0',
+    img = 'src/assets/img/no-photo.jpg',
+    isClothes = false,
+    details = 'Нет в наличии',
+) {
     if (modalContainer) {
         modalContainer.innerHTML = `<div class="card">
         <div class="card__wrapper">
