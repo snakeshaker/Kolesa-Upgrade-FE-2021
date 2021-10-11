@@ -2,6 +2,11 @@
 import '../scss/style.scss';
 import { clothes, accessories } from './mock-catalog';
 
+const allItems = [...clothes, ...accessories];
+const filterChange = document.querySelectorAll('.js__filter');
+const modalContainer = document.querySelector('.card-container');
+const catalog = document.querySelector('.js__catalog');
+
 function sortNew(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].isNew === true) {
@@ -11,9 +16,6 @@ function sortNew(arr) {
 }
 sortNew(clothes);
 sortNew(accessories);
-
-const allItems = [...clothes, ...accessories];
-
 sortNew(allItems);
 
 function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClothes, id) {
@@ -51,13 +53,13 @@ function renderCatalog(catalogFilter) {
         } = card;
         const cardCreate = addItem(isNew, title, price, img, isClothes, id);
 
-        document.querySelector('.js__catalog').append(cardCreate);
+        if (document.body.contains(catalog)) {
+            catalog.append(cardCreate);
+        }
     });
 }
 
 renderCatalog(allItems);
-
-const filterChange = document.querySelectorAll('.js__filter');
 
 for (let i = 0; i < filterChange.length; i++) {
     filterChange[i].addEventListener('change', (e) => {
@@ -65,15 +67,24 @@ for (let i = 0; i < filterChange.length; i++) {
 
         switch (target.id) {
             case 'item_clothes':
-                document.querySelector('.js__catalog').innerHTML = '';
+                if (document.body.contains(catalog)) {
+                    catalog.innerHTML = '';
+                }
+
                 renderCatalog(clothes);
                 break;
             case 'item_accessories':
-                document.querySelector('.js__catalog').innerHTML = '';
+                if (document.body.contains(catalog)) {
+                    catalog.innerHTML = '';
+                }
+
                 renderCatalog(accessories);
                 break;
             case 'item_all':
-                document.querySelector('.js__catalog').innerHTML = '';
+                if (document.body.contains(catalog)) {
+                    catalog.innerHTML = '';
+                }
+
                 renderCatalog(allItems);
                 break;
             default: break;
@@ -82,7 +93,6 @@ for (let i = 0; i < filterChange.length; i++) {
 }
 
 // MODAL WINDOW CODE
-const modalContainer = document.querySelector('.card-container');
 
 function changeModal(title, price, img = 'src/assets/img/no-photo.jpg', isClothes, details) {
     modalContainer.innerHTML = `<div class="card">
