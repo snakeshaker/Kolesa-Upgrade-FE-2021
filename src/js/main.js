@@ -21,9 +21,10 @@ sortNew(allItems);
 function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClothes, id) {
     const newDiv = document.createElement('DIV');
 
-    newDiv.classList.add('catalog__item');
-    newDiv.classList.add(`${id}`);
-    newDiv.innerHTML = `<div class="catalog__img">
+    if (newDiv) {
+        newDiv.classList.add('catalog__item');
+        newDiv.classList.add(`${id}`);
+        newDiv.innerHTML = `<div class="catalog__img">
         <img class="js__img" src="${img}" alt="item" width="330" height="330">
         ${isNew ? '<div class="catalog__new">New</div>' : ''}
     </div>
@@ -42,6 +43,7 @@ function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClo
             Заказать
         </button>
     </div>`;
+    }
 
     return newDiv;
 }
