@@ -144,7 +144,7 @@ for (let i = 0; i < allItems.length; i += 1) {
     }
 }
 
-function addItem(isNew, title, price, img, isClothes, id) {
+function addItem(isNew, title, price, img = 'src/assets/img/no-photo.jpg', isClothes, id) {
     const newDiv = document.createElement('DIV');
 
     newDiv.classList.add('catalog__item');
@@ -212,7 +212,7 @@ for (let i = 0; i < filterChange.length; i += 1) {
 // MODAL WINDOW CODE
 const modalContainer = document.querySelector('.card-container');
 
-function changeModal(title, price, img, isClothes, details) {
+function changeModal(title, price, img = 'src/assets/img/no-photo.jpg', isClothes, details) {
     modalContainer.innerHTML = `<div class="card">
     <div class="card__wrapper">
         <button class="card__close" type="button"></button>
