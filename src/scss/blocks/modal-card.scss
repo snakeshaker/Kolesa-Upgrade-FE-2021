@@ -2,7 +2,7 @@
     border: 1px solid $card-border;
     max-width: 1040px;
     overflow-y: auto;
-    background: $white;
+    background: $full-white;
     border-radius: 16px;
 
     &__wrapper {
@@ -61,7 +61,6 @@
 
     &__info {
         width: 573px;
-        align-self: center;
         padding-top: 8px;
     }
 
@@ -112,7 +111,7 @@
         gap: 12px;
         position: absolute;
         right: 0;
-        top: 48px;
+        bottom: -4px;
     }
 
     &__balance-info {
@@ -177,5 +176,13 @@
         &--gray {
             background: $modal-gray;
         }
+    }
+
+    &__overlay {
+        z-index: -1;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100vw;
+        height: 100vh;
     }
 }

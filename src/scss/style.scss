@@ -74,6 +74,9 @@ input {
 }
 
 .card-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,5 +85,11 @@ input {
     color: $black;
     font-size: 14px;
     line-height: 24px;
-    backdrop-filter: brightness(40%);
+    opacity: 0;
+    visibility: hidden;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
 }
