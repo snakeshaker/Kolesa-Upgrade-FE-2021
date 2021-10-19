@@ -1,28 +1,227 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="content-container">
+        <header class="header">
+            <div class="header__logo">
+                <img src="@/assets/svg/kolesa-logo.svg" alt="Logo">
+            </div>
+            <form action="" class="header__form">
+                <label for="search" class="header__search search">
+                    <button class="search__icon" type="button">
+                        <img src="@/assets/svg/search-big.svg" alt="Search">
+                    </button>
+                    <input class="search__input" id="search" type="text" placeholder="Поиск">
+                </label>
+            </form>
+            <a class="user-block" href="">
+                <img class="user-block__avatar" src="@/assets/img/avatar.png" alt="User avatar">
+                <div class="user-block__info">
+                    <div class="user-block__name">
+                        Мортиджан
+                    </div>
+                    <div class="user-block__points">
+                        300 баллов
+                    </div>
+                </div>
+            </a>
+        </header>
+        <aside class="aside">
+            <nav class="aside__nav">
+                <ul>
+                    <li>
+                        <a class="aside__nav-link" href="">Оргсхема</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">
+                          Kolesa <span class="aside__nav--bold">Team</span>
+                        </a>
+                    </li>
+                    <li class="aside__nav--active">
+                        <a class="aside__nav-link" href="">Kolesa Shop</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">Картина компании</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">Новости</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">Education</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">Guidelines</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">Библиотека</a>
+                    </li>
+                    <li>
+                        <a class="aside__nav-link" href="">FAQ</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <div class="main__banner"></div>
+            <div class="points">
+                <a class="points__block points__block--green">
+                    <div class="points__icon">
+                        <img src="@/assets/svg/points-plus.svg" alt="plus">
+                    </div>
+                    <div class="points__info">
+                        Получить баллы
+                    </div>
+                </a>
+                <a class="points__block points__block--yellow">
+                    <div class="points__icon">
+                        <img src="@/assets/svg/points-question.svg" alt="question">
+                    </div>
+                    <div class="points__info">
+                        Как получить баллы
+                    </div>
+                </a>
+                <a class="points__block points__block--blue">
+                    <div class="points__icon">
+                        <img src="@/assets/svg/points-present.svg" alt="present">
+                    </div>
+                    <div class="points__info">
+                        Подарить баллы
+                    </div>
+                </a>
+            </div>
+            <div class="main__item-filter">
+                <input class="js__filter" type="radio" id="item_all" name="item-selector" checked>
+                <label for="item_all">Все товары</label>
+                <input class="js__filter" type="radio" id="item_clothes" name="item-selector">
+                <label for="item_clothes">Одежда</label>
+                <input class="js__filter" type="radio" id="item_accessories" name="item-selector">
+                <label for="item_accessories">Аксессуары</label>
+            </div>
+            <div class="catalog js__catalog">
+
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="footer__socials">
+                <div class="footer__credit">
+                    © Kolesa Group
+                </div>
+                <ul>
+                    <li><a href="https://www.instagram.com/kolesagroup/" target="_blank">
+                        <img src="@/assets/svg/social-instagram.svg" alt="Instagram">
+                    </a></li>
+                    <li><a href="https://www.youtube.com/channel/UC6o6waSdIvmIdvy7qTqxY9A" target="_blank">
+                        <img src="@/assets/svg/social-youtube.svg" alt="YouTube">
+                    </a></li>
+                    <li><a href="https://vk.com/kolesakrishamarket" target="_blank">
+                        <img src="@/assets/svg/social-vk.svg" alt="VK">
+                    </a></li>
+                </ul>
+            </div>
+            <div class="footer__feedback">
+                <div class="footer__info">
+                    Есть идеи что улучшить? <br>
+                    Не знаешь, с кем решить проблему?
+                </div>
+                <button class="footer__btn" type="button">
+                    Написать
+                </button>
+            </div>
+        </div>
+    </footer>
+    <div class="card-container">
+        <div class="card">
+            <div class="card__wrapper">
+                <button class="card__close" type="button"></button>
+                <div class="card__images">
+                    <img
+                    src="@/assets/img/big-img.png"
+                    alt="main image"
+                    class="card__images--big">
+                    <div class="card__little-images">
+                        <div class="card__images--little">
+                            <img src="@/assets/img/little-image1.png" alt="little image">
+                        </div>
+                        <div class="card__images--little">
+                            <img
+                            class="card__images--active"
+                            src="@/assets/img/little-image2.png"
+                            alt="little image">
+                        </div>
+                        <div class="card__images--little">
+                            <img src="@/assets/img/little-image3.png" alt="little image">
+                        </div>
+                    </div>
+                </div>
+                <form class="card__info">
+                    <div class="card__top">
+                        <h3 class="card__title">Футболка "Эволюционируй или сдохни"</h3>
+                        <p class="card__price">100 баллов</p>
+                        <button class="card__button" type="submit">
+                            Заказать
+                        </button>
+                        <div class="card__balance">
+                            <div class="card__balance-info">
+                                <p class="card__balance-info--gray">Твой баланс:</p>
+                                <p class="card__sum">3 945 баллов</p>
+                            </div>
+                            <div class="card__logo"></div>
+                        </div>
+                    </div>
+                    <div class="card__bottom">
+                        <p class="card__heading">Цвета:</p>
+                        <div class="card__radio-group">
+                            <input type="radio" id="color-blue" name="color-selector">
+                            <label class="card__radio-group--color" for="color-blue">
+                                <div class="card__square card__square--blue"></div>
+                                Синий
+                            </label>
+                            <input type="radio" id="color-beige" name="color-selector">
+                            <label class="card__radio-group--color" for="color-beige">
+                                <div class="card__square card__square--beige"></div>
+                                Бежевый
+                            </label>
+                            <input type="radio" id="color-gray" name="color-selector">
+                            <label class="card__radio-group--color" for="color-gray">
+                                <div class="card__square card__square--gray"></div>
+                                Серый
+                            </label>
+                        </div>
+                        <p class="card__heading">Info:</p>
+                        <div class="card__radio-group">
+                            <input type="radio" id="size-s" name="size-selector">
+                            <label class="card__radio-group--size" for="size-s">S</label>
+                            <input type="radio" id="size-m" name="size-selector">
+                            <label class="card__radio-group--size" for="size-m">M</label>
+                            <input type="radio" id="size-l" name="size-selector">
+                            <label class="card__radio-group--size" for="size-l">L</label>
+                        </div>
+                        <p class="card__heading card__heading--bold">Details:</p>
+                        <p>
+                          Text
+                           </p>
+                        <p class="card__heading card__heading--bold">Info:</p>
+                        <p>Info.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card__overlay"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/scss/style.scss';
 </style>

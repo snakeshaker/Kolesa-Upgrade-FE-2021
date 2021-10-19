@@ -1,0 +1,64 @@
+.points {
+    display: flex;
+    justify-content: space-between;
+    -webkit-gap: 24px;
+    -moz-gap: 24px;
+    -ms-gap: 24px;
+    -o-gap: 24px;
+    gap: 24px;
+    height: 76px;
+
+    &__block {
+        padding: 10px 26px 10px 24px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+        line-height: 32px;
+        width: 100%;
+
+        &--green {
+            background: $light-green;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $dark-green;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        &--yellow {
+            background: $light-yellow;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $dark-yellow;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        &--blue {
+            background: $light-blue;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $dark-blue;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+
+    &__info {
+        margin-left: 16px;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 56px;
+    }
+}
