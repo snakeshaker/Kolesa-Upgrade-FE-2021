@@ -90,16 +90,31 @@
                 </a>
             </div>
             <div class="main__item-filter">
-                <input class="js__filter" type="radio" id="item_all" name="item-selector" checked>
+                <input
+                @click="renderAll"
+                class="js__filter"
+                type="radio"
+                id="item_all"
+                name="item-selector" checked>
                 <label for="item_all">Все товары</label>
-                <input class="js__filter" type="radio" id="item_clothes" name="item-selector">
+                <input
+                @click="renderClothes"
+                class="js__filter"
+                type="radio"
+                id="item_clothes"
+                name="item-selector">
                 <label for="item_clothes">Одежда</label>
-                <input class="js__filter" type="radio" id="item_accessories" name="item-selector">
+                <input
+                @click="renderAccessories"
+                class="js__filter"
+                type="radio"
+                id="item_accessories"
+                name="item-selector">
                 <label for="item_accessories">Аксессуары</label>
             </div>
             <div class="catalog js__catalog">
               <div
-              v-for="item in allItems"
+              v-for="item in renderCatalog"
               :key="item.id"
               class="catalog__item">
                 <div class="catalog__img">
@@ -248,6 +263,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      renderCatalog: [],
       clothes: [
         {
           id: 0,
@@ -375,13 +391,14 @@ export default {
     allItems() {
       return [...this.clothes, ...this.accessories];
     },
-    sortNew(arr) {
-      for (let i = 0; i < arr.length; i += 1) {
-        if (arr[i].isNew === true) {
-          arr.unshift(arr.splice(i, 1)[0]);
-        }
-      }
-      return arr;
+    sortedAll() {
+      return this.allItems.slice().sort((item) => (item.isNew !== true ? 1 : -1));
+    },
+    sortedClothes() {
+      return this.clothes.slice().sort((item) => (item.isNew !== true ? 1 : -1));
+    },
+    sortedAccessories() {
+      return this.accessories.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
   },
   methods: {
@@ -391,6 +408,18 @@ export default {
     closeModal() {
       this.isShowModal = false;
     },
+    renderAll() {
+      this.renderCatalog = this.sortedAll;
+    },
+    renderClothes() {
+      this.renderCatalog = this.sortedClothes;
+    },
+    renderAccessories() {
+      this.renderCatalog = this.sortedAccessories;
+    },
+  },
+  beforeMount() {
+    this.renderAll();
   },
 };
 </script>
