@@ -136,7 +136,7 @@
                   <div v-if="!item.isClothes" class="catalog__size">
                   Объемы 0,5/0,7/1,0
                   </div>
-                  <button @click="openModal" class="catalog__btn" type="button">
+                  <button @click="toggleModal" class="catalog__btn" type="button">
                       Заказать
                   </button>
               </div>
@@ -177,7 +177,7 @@
     <div v-if="isShowModal" class="card-container">
         <div class="card">
             <div class="card__wrapper">
-                <button class="card__close" type="button" @click="closeModal"></button>
+                <button class="card__close" type="button" @click="toggleModal"></button>
                 <div class="card__images">
                     <img
                     src="@/assets/img/big-img.png"
@@ -251,7 +251,7 @@
                 </form>
             </div>
         </div>
-        <div class="card__overlay" @click="closeModal"></div>
+        <div class="card__overlay" @click="toggleModal"></div>
     </div>
   </div>
 </template>
@@ -402,11 +402,8 @@ export default {
     },
   },
   methods: {
-    openModal() {
-      this.isShowModal = true;
-    },
-    closeModal() {
-      this.isShowModal = false;
+    toggleModal() {
+      this.isShowModal = !this.isShowModal;
     },
     renderAll() {
       this.renderCatalog = this.sortedAll;
