@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="wrap">
-<div class="content-container">
+      <div class="content-container">
         <header class="header">
             <div class="header__logo">
                 <img src="@/assets/svg/kolesa-logo.svg" alt="Logo">
@@ -91,59 +91,67 @@
             </div>
             <div class="main__item-filter">
                 <input
-                @click="renderAll"
-                class="js__filter"
-                type="radio"
-                id="item_all"
-                name="item-selector" checked>
+                  @click="renderAll"
+                  class="js__filter"
+                  type="radio"
+                  id="item_all"
+                  name="item-selector"
+                  checked
+                >
                 <label for="item_all">Все товары</label>
                 <input
-                @click="renderClothes"
-                class="js__filter"
-                type="radio"
-                id="item_clothes"
-                name="item-selector">
+                  @click="renderClothes"
+                  class="js__filter"
+                  type="radio"
+                  id="item_clothes"
+                  name="item-selector"
+                >
                 <label for="item_clothes">Одежда</label>
                 <input
-                @click="renderAccessories"
-                class="js__filter"
-                type="radio"
-                id="item_accessories"
-                name="item-selector">
+                  @click="renderAccessories"
+                  class="js__filter"
+                  type="radio"
+                  id="item_accessories"
+                  name="item-selector"
+                >
                 <label for="item_accessories">Аксессуары</label>
             </div>
             <div class="catalog js__catalog">
               <div
-              v-for="item in renderCatalog"
-              :key="item.id"
-              class="catalog__item">
+                v-for="item in renderCatalog"
+                :key="item.id"
+                class="catalog__item"
+              >
                 <div class="catalog__img">
                   <img
-                  :src="require(`@/assets/img/${item.img}`)"
-                  class="js__img" alt="item" width="330" height="330">
+                    :src="require(`@/assets/img/${item.img}`)"
+                    class="js__img" alt="item"
+                    width="330"
+                    height="330"
+                  >
                   <div v-if="item.isNew" class="catalog__new">New</div>
-              </div>
-              <div class="catalog__info">
+                </div>
+                <div class="catalog__info">
                   <div class="catalog__price">
-                      {{item.price}} баллов
+                    {{item.price}} баллов
                   </div>
                   <div class="catalog__name">
-                      {{item.title}}
+                    {{item.title}}
                   </div>
                   <div v-if="item.isClothes" class="catalog__size">
-                  Размеры S/M/L
+                    Размеры S/M/L
                   </div>
                   <div v-if="!item.isClothes" class="catalog__size">
-                  Объемы 0,5/0,7/1,0
+                    Объемы 0,5/0,7/1,0
                   </div>
                   <button @click="toggleModal" class="catalog__btn" type="button">
-                      Заказать
+                    Заказать
                   </button>
-              </div>
+                </div>
               </div>
             </div>
         </main>
-    </div>
+      </div>
     </div>
     <footer class="footer">
         <div class="footer__wrapper">
