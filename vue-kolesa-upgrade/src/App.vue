@@ -29,34 +29,25 @@
         <aside class="aside">
             <nav class="aside__nav">
                 <ul>
-                    <li>
-                        <a class="aside__nav-link" href="">Оргсхема</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">
+                    <li v-for="(link,index) in menuLinks" :key="index">
+                        <a
+                          v-if="link !== 'Kolesa Team'"
+                          class="aside__nav-link"
+                          :class="{ 'aside__nav--active': activeLink === link }"
+                          @click="activeLink = link"
+                          href="#"
+                        >
+                          {{ link }}
+                        </a>
+                        <a
+                          v-else
+                          class="aside__nav-link"
+                          :class="{ 'aside__nav--active': activeLink === link }"
+                          @click="activeLink = link"
+                          href="#"
+                        >
                           Kolesa <span class="aside__nav--bold">Team</span>
                         </a>
-                    </li>
-                    <li class="aside__nav--active">
-                        <a class="aside__nav-link" href="">Kolesa Shop</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">Картина компании</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">Новости</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">Education</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">Guidelines</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">Библиотека</a>
-                    </li>
-                    <li>
-                        <a class="aside__nav-link" href="">FAQ</a>
                     </li>
                 </ul>
             </nav>
@@ -104,6 +95,7 @@
                   name="item-selector"
                   checked
                 >
+                <label v-if="tab === 'Все товары'" for="item_all">Все товары</label>
                 <input
                   v-if="tab === 'Одежда'"
                   @click="renderClothes"
@@ -112,6 +104,7 @@
                   id="item_clothes"
                   name="item-selector"
                 >
+                <label v-if="tab === 'Одежда'" for="item_clothes">Одежда</label>
                 <input
                   v-if="tab === 'Аксессуары'"
                   @click="renderAccessories"
@@ -120,8 +113,6 @@
                   id="item_accessories"
                   name="item-selector"
                 >
-                <label v-if="tab === 'Все товары'" for="item_all">Все товары</label>
-                <label v-if="tab === 'Одежда'" for="item_clothes">Одежда</label>
                 <label v-if="tab === 'Аксессуары'" for="item_accessories">Аксессуары</label>
               </div>
             </div>
@@ -281,6 +272,18 @@ export default {
     return {
       isShowModal: false,
       filterTabs: ['Все товары', 'Одежда', 'Аксессуары'],
+      menuLinks: [
+        'Оргсхема',
+        'Kolesa Team',
+        'Kolesa Shop',
+        'Картина компании',
+        'Новости',
+        'Education',
+        'Guidelines',
+        'Библиотека',
+        'FAQ',
+      ],
+      activeLink: 'Kolesa Shop',
       renderCatalog: [],
       clothes: [
         {
