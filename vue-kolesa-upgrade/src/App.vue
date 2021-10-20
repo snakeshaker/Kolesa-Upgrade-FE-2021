@@ -399,28 +399,22 @@ export default {
     allItems() {
       return [...this.clothes, ...this.accessories];
     },
-    sortedAll() {
-      return this.allItems.slice().sort((item) => (item.isNew !== true ? 1 : -1));
-    },
-    sortedClothes() {
-      return this.clothes.slice().sort((item) => (item.isNew !== true ? 1 : -1));
-    },
-    sortedAccessories() {
-      return this.accessories.slice().sort((item) => (item.isNew !== true ? 1 : -1));
-    },
   },
   methods: {
     toggleModal() {
       this.isShowModal = !this.isShowModal;
     },
+    sortCatalog(arr) {
+      return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
+    },
     renderAll() {
-      this.renderCatalog = this.sortedAll;
+      this.renderCatalog = this.sortCatalog(this.allItems);
     },
     renderClothes() {
-      this.renderCatalog = this.sortedClothes;
+      this.renderCatalog = this.sortCatalog(this.clothes);
     },
     renderAccessories() {
-      this.renderCatalog = this.sortedAccessories;
+      this.renderCatalog = this.sortCatalog(this.accessories);
     },
   },
   beforeMount() {
