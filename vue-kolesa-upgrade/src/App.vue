@@ -90,7 +90,13 @@
                 </a>
             </div>
             <div class="main__item-filter">
+              <div
+                v-for="(tab,index) in filterTabs"
+                :key="index"
+                class="main__filter-radio"
+              >
                 <input
+                  v-if="tab === 'Все товары'"
                   @click="renderAll"
                   class="js__filter"
                   type="radio"
@@ -98,23 +104,26 @@
                   name="item-selector"
                   checked
                 >
-                <label for="item_all">Все товары</label>
                 <input
+                  v-if="tab === 'Одежда'"
                   @click="renderClothes"
                   class="js__filter"
                   type="radio"
                   id="item_clothes"
                   name="item-selector"
                 >
-                <label for="item_clothes">Одежда</label>
                 <input
+                  v-if="tab === 'Аксессуары'"
                   @click="renderAccessories"
                   class="js__filter"
                   type="radio"
                   id="item_accessories"
                   name="item-selector"
                 >
-                <label for="item_accessories">Аксессуары</label>
+                <label v-if="tab === 'Все товары'" for="item_all">Все товары</label>
+                <label v-if="tab === 'Одежда'" for="item_clothes">Одежда</label>
+                <label v-if="tab === 'Аксессуары'" for="item_accessories">Аксессуары</label>
+              </div>
             </div>
             <div class="catalog js__catalog">
               <div
@@ -271,6 +280,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      filterTabs: ['Все товары', 'Одежда', 'Аксессуары'],
       renderCatalog: [],
       clothes: [
         {
