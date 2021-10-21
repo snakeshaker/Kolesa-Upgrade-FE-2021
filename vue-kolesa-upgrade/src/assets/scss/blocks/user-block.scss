@@ -1,0 +1,29 @@
+@import '../mixins.scss';
+
+.user-block {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 52px;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        @include scale-animation;
+    }
+
+    &__info {
+        padding-left: 16px;
+    }
+
+    &__name {
+        font-size: 14px;
+        color: $blue;
+        font-weight: 600;
+    }
+
+    &__points {
+        font-size: 13px;
+        line-height: 20px;
+    }
+}
