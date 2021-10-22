@@ -14,32 +14,7 @@
         <side-navigation></side-navigation>
         <main class="main">
             <div class="main__banner"></div>
-            <div class="points">
-                <a class="points__block points__block--green">
-                    <div class="points__icon">
-                        <img src="@/assets/svg/points-plus.svg" alt="plus">
-                    </div>
-                    <div class="points__info">
-                        Получить баллы
-                    </div>
-                </a>
-                <a class="points__block points__block--yellow">
-                    <div class="points__icon">
-                        <img src="@/assets/svg/points-question.svg" alt="question">
-                    </div>
-                    <div class="points__info">
-                        Как получить баллы
-                    </div>
-                </a>
-                <a class="points__block points__block--blue">
-                    <div class="points__icon">
-                        <img src="@/assets/svg/points-present.svg" alt="present">
-                    </div>
-                    <div class="points__info">
-                        Подарить баллы
-                    </div>
-                </a>
-            </div>
+            <hot-buttons></hot-buttons>
             <div class="main__item-filter">
               <div
                 v-for="(tab,index) in filterTabs"
@@ -131,6 +106,7 @@
 </template>
 
 <script>
+import HotButtons from './components/HotButtons.vue';
 import Modal from './components/Modal.vue';
 import Search from './components/Search.vue';
 import SideNavigation from './components/sideNavigation.vue';
@@ -143,6 +119,7 @@ export default {
     Search,
     User,
     SideNavigation,
+    HotButtons,
   },
   data() {
     return {
