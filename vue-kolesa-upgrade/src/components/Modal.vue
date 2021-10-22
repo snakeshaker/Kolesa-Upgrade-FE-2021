@@ -1,0 +1,96 @@
+<template>
+  <div v-if="isModalOpen" class="card-container">
+        <div class="card">
+            <div class="card__wrapper">
+                <button class="card__close" type="button" @click="toggleModal"></button>
+                <div class="card__images">
+                    <img
+                    src="@/assets/img/big-img.png"
+                    alt="main image"
+                    class="card__images--big">
+                    <div class="card__little-images">
+                        <div class="card__images--little">
+                            <img src="@/assets/img/little-image1.png" alt="little image">
+                        </div>
+                        <div class="card__images--little">
+                            <img
+                            class="card__images--active"
+                            src="@/assets/img/little-image2.png"
+                            alt="little image">
+                        </div>
+                        <div class="card__images--little">
+                            <img src="@/assets/img/little-image3.png" alt="little image">
+                        </div>
+                    </div>
+                </div>
+                <form class="card__info">
+                    <div class="card__top">
+                        <h3 class="card__title">Футболка "Эволюционируй или сдохни"</h3>
+                        <p class="card__price">100 баллов</p>
+                        <button class="card__button" type="submit">
+                            Заказать
+                        </button>
+                        <div class="card__balance">
+                            <div class="card__balance-info">
+                                <p class="card__balance-info--gray">Твой баланс:</p>
+                                <p class="card__sum">3 945 баллов</p>
+                            </div>
+                            <div class="card__logo"></div>
+                        </div>
+                    </div>
+                    <div class="card__bottom">
+                        <p class="card__heading">Цвета:</p>
+                        <div class="card__radio-group">
+                            <input type="radio" id="color-blue" name="color-selector">
+                            <label class="card__radio-group--color" for="color-blue">
+                                <div class="card__square card__square--blue"></div>
+                                Синий
+                            </label>
+                            <input type="radio" id="color-beige" name="color-selector">
+                            <label class="card__radio-group--color" for="color-beige">
+                                <div class="card__square card__square--beige"></div>
+                                Бежевый
+                            </label>
+                            <input type="radio" id="color-gray" name="color-selector">
+                            <label class="card__radio-group--color" for="color-gray">
+                                <div class="card__square card__square--gray"></div>
+                                Серый
+                            </label>
+                        </div>
+                        <p class="card__heading">Info:</p>
+                        <div class="card__radio-group">
+                            <input type="radio" id="size-s" name="size-selector">
+                            <label class="card__radio-group--size" for="size-s">S</label>
+                            <input type="radio" id="size-m" name="size-selector">
+                            <label class="card__radio-group--size" for="size-m">M</label>
+                            <input type="radio" id="size-l" name="size-selector">
+                            <label class="card__radio-group--size" for="size-l">L</label>
+                        </div>
+                        <p class="card__heading card__heading--bold">Details:</p>
+                        <p>
+                          Text
+                           </p>
+                        <p class="card__heading card__heading--bold">Info:</p>
+                        <p>Info.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card__overlay" @click="toggleModal"></div>
+    </div>
+</template>
+
+<script>
+
+export default {
+  name: 'Modal',
+  props: {
+    isModalOpen: Boolean,
+  },
+  methods: {
+    toggleModal() {
+      this.$emit('toggle');
+    },
+  },
+};
+</script>
