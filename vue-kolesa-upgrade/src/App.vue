@@ -6,35 +6,12 @@
             <div class="header__logo">
                 <img src="@/assets/svg/kolesa-logo.svg" alt="Logo">
             </div>
-            <search></search>
+            <form action="" class="header__form">
+              <search></search>
+            </form>
             <user></user>
         </header>
-        <aside class="aside">
-            <nav class="aside__nav">
-                <ul>
-                    <li v-for="(link,index) in menuLinks" :key="index">
-                        <a
-                          v-if="link !== 'Kolesa Team'"
-                          class="aside__nav-link"
-                          :class="{ 'aside__nav--active': activeLink === link }"
-                          @click="activeLink = link"
-                          href="#"
-                        >
-                          {{ link }}
-                        </a>
-                        <a
-                          v-else
-                          class="aside__nav-link"
-                          :class="{ 'aside__nav--active': activeLink === link }"
-                          @click="activeLink = link"
-                          href="#"
-                        >
-                          Kolesa <span class="aside__nav--bold">Team</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+        <side-navigation></side-navigation>
         <main class="main">
             <div class="main__banner"></div>
             <div class="points">
@@ -156,6 +133,7 @@
 <script>
 import Modal from './components/Modal.vue';
 import Search from './components/Search.vue';
+import SideNavigation from './components/sideNavigation.vue';
 import User from './components/User.vue';
 
 export default {
@@ -164,6 +142,7 @@ export default {
     Modal,
     Search,
     User,
+    SideNavigation,
   },
   data() {
     return {
@@ -182,18 +161,6 @@ export default {
           id: 'item_accessories',
         },
       ],
-      menuLinks: [
-        'Оргсхема',
-        'Kolesa Team',
-        'Kolesa Shop',
-        'Картина компании',
-        'Новости',
-        'Education',
-        'Guidelines',
-        'Библиотека',
-        'FAQ',
-      ],
-      activeLink: 'Kolesa Shop',
       renderCatalog: [],
       clothes: [
         {
