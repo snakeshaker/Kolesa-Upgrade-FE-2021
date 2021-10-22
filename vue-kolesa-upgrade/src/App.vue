@@ -6,14 +6,7 @@
             <div class="header__logo">
                 <img src="@/assets/svg/kolesa-logo.svg" alt="Logo">
             </div>
-            <form action="" class="header__form">
-                <label for="search" class="header__search search">
-                    <button class="search__icon" type="button">
-                        <img src="@/assets/svg/search-big.svg" alt="Search">
-                    </button>
-                    <input class="search__input" id="search" type="text" placeholder="Поиск">
-                </label>
-            </form>
+            <search></search>
             <a class="user-block" href="">
                 <img class="user-block__avatar" src="@/assets/img/avatar.png" alt="User avatar">
                 <div class="user-block__info">
@@ -172,11 +165,13 @@
 
 <script>
 import Modal from './components/Modal.vue';
+import Search from './components/Search.vue';
 
 export default {
   name: 'App',
   components: {
     Modal,
+    Search,
   },
   data() {
     return {
