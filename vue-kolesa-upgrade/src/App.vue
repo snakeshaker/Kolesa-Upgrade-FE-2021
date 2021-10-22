@@ -87,33 +87,17 @@
                 class="main__filter-radio"
               >
                 <input
-                  v-if="tab === 'Все товары'"
-                  @click="renderAll"
+                  @click="
+                    tab.id == 'item_all' ?
+                    renderAll() : tab.id == 'item_clothes' ?
+                    renderClothes() : renderAccessories()
+                  "
                   class="js__filter"
                   type="radio"
-                  id="item_all"
-                  name="item-selector"
-                  checked
-                >
-                <label v-if="tab === 'Все товары'" for="item_all">Все товары</label>
-                <input
-                  v-if="tab === 'Одежда'"
-                  @click="renderClothes"
-                  class="js__filter"
-                  type="radio"
-                  id="item_clothes"
+                  :id="tab.id"
                   name="item-selector"
                 >
-                <label v-if="tab === 'Одежда'" for="item_clothes">Одежда</label>
-                <input
-                  v-if="tab === 'Аксессуары'"
-                  @click="renderAccessories"
-                  class="js__filter"
-                  type="radio"
-                  id="item_accessories"
-                  name="item-selector"
-                >
-                <label v-if="tab === 'Аксессуары'" for="item_accessories">Аксессуары</label>
+                <label :for="tab.id">{{ tab.title }}</label>
               </div>
             </div>
             <div class="catalog js__catalog">
@@ -271,7 +255,20 @@ export default {
   data() {
     return {
       isShowModal: false,
-      filterTabs: ['Все товары', 'Одежда', 'Аксессуары'],
+      filterTabs: [
+        {
+          title: 'Все товары',
+          id: 'item_all',
+        },
+        {
+          title: 'Одежда',
+          id: 'item_clothes',
+        },
+        {
+          title: 'Аксессуары',
+          id: 'item_accessories',
+        },
+      ],
       menuLinks: [
         'Оргсхема',
         'Kolesa Team',
