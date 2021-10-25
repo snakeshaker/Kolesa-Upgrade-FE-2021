@@ -6,7 +6,7 @@
         Мортиджан
       </div>
       <div class="user-block__points">
-        300 баллов
+        {{ balance }} баллов
       </div>
     </div>
   </a>
@@ -16,5 +16,8 @@
 
 export default {
   name: 'User',
+  props: {
+    balance: Number,
+  },
 };
 </script>

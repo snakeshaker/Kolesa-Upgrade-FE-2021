@@ -27,7 +27,7 @@
               <div class="card__balance">
                 <div class="card__balance-info">
                     <p class="card__balance-info--gray">Твой баланс:</p>
-                    <p class="card__sum">3 945 баллов</p>
+                    <p class="card__sum">{{ balance }} баллов</p>
                 </div>
                 <div class="card__logo"></div>
               </div>
@@ -93,6 +93,7 @@ export default {
   props: {
     isModalOpen: Boolean,
     data: Object,
+    balance: Number,
   },
   methods: {
     toggleModal() {

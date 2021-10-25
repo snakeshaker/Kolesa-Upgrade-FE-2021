@@ -9,7 +9,7 @@
             <form action="" class="header__form">
               <search></search>
             </form>
-            <user></user>
+            <user :balance="balance"></user>
         </header>
         <side-navigation></side-navigation>
         <main class="main">
@@ -103,6 +103,7 @@
     </footer>
     <modal
       :data="modalData"
+      :balance="balance"
       :isModalOpen="isShowModal"
       @toggle="toggleModal"
       @order="setBalance"
