@@ -108,12 +108,20 @@
       @toggle="toggleModal"
       @order="setBalance"
     ></modal>
+    <order-modal
+      :data="modalData"
+      :balance="balance"
+      :isComplete="isComplete"
+      :isOrderPlaced="isShowOrder"
+      @toggle-order="toggleOrderModal"
+    ></order-modal>
   </div>
 </template>
 
 <script>
 import HotButtons from './components/HotButtons.vue';
 import Modal from './components/Modal.vue';
+import OrderModal from './components/OrderModal.vue';
 import Search from './components/Search.vue';
 import SideNavigation from './components/sideNavigation.vue';
 import User from './components/User.vue';
@@ -126,11 +134,14 @@ export default {
     User,
     SideNavigation,
     HotButtons,
+    OrderModal,
   },
   data() {
     return {
       isShowModal: false,
-      balance: 3945,
+      isShowOrder: false,
+      isComplete: false,
+      balance: 900,
       modalData: {},
       filterTabs: [
         {
@@ -283,6 +294,9 @@ export default {
     toggleModal() {
       this.isShowModal = !this.isShowModal;
     },
+    toggleOrderModal() {
+      this.isShowOrder = !this.isShowOrder;
+    },
     sortCatalog(arr) {
       return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
@@ -297,7 +311,14 @@ export default {
     },
     setBalance(price) {
       this.toggleModal();
-      this.balance -= price;
+      if (this.balance < price) {
+        this.isShowOrder = true;
+        this.isComplete = false;
+      } else {
+        this.isShowOrder = true;
+        this.isComplete = true;
+        this.balance -= price;
+      }
     },
   },
   beforeMount() {

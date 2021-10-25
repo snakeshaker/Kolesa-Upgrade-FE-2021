@@ -21,8 +21,21 @@
             <div class="card__top">
               <h3 class="card__title">{{ data.title }}</h3>
               <p class="card__price">{{ data.price }} баллов</p>
-              <button @click="order" class="card__button" type="submit">
+              <button
+                v-if="balance >= data.price"
+                @click="order"
+                class="card__button"
+                type="submit"
+              >
                 Заказать
+              </button>
+              <button
+                v-if="balance < data.price"
+                @click="order"
+                class="card__button card__button--low"
+                type="submit"
+              >
+                Попросить {{ lowBalance() }} баллов
               </button>
               <div class="card__balance">
                 <div class="card__balance-info">
@@ -101,6 +114,9 @@ export default {
     },
     order() {
       this.$emit('order', this.data.price);
+    },
+    lowBalance() {
+      return this.data.price - this.balance;
     },
   },
 };

@@ -1,7 +1,6 @@
 .card {
     border: 1px solid $card-border;
     max-width: 1040px;
-    overflow-y: auto;
     background: $full-white;
     border-radius: 16px;
 
@@ -104,6 +103,17 @@
         justify-content: center;
         border: none;
         font-size: 14px;
+
+        &--low {
+            color: $black;
+            background: $modal-yellow;
+            min-width: 184px;
+        }
+
+        &--order {
+            width: 287px;
+            line-height: 24px;
+        }
     }
 
     &__balance {
@@ -194,5 +204,51 @@
         background: rgba(0, 0, 0, 0.5);
         width: 100vw;
         height: 100vh;
+    }
+
+    &__order_content {
+        padding: 52px 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__order_icon {
+        width: 50px;
+        height: 50px;
+        background: url(assets/img/order-icon.png);
+        background-size: cover;
+        margin-bottom: 16px;
+
+        &--low {
+            width: 50px;
+            height: 50px;
+            background: url(assets/img/order-low.png);
+            background-size: cover;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__order_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 464px;
+        text-align: center;
+
+        & h2 {
+            font-weight: 600;
+            line-height: 36px;
+            font-size: 24px;
+        }
+        
+        & p {
+            margin-top: 4px;
+            margin-bottom: 24px;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+        }
     }
 }
