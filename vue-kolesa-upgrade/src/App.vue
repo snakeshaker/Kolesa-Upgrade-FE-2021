@@ -16,24 +16,14 @@
             <div class="main__banner"></div>
             <hot-buttons></hot-buttons>
             <div class="main__item-filter">
-              <div
+              <catalog-filter
                 v-for="(tab,index) in filterTabs"
                 :key="index"
-                class="main__filter-radio"
-              >
-                <input
-                  @click="
-                    tab.id == 'item_all' ?
-                    renderAll() : tab.id == 'item_clothes' ?
-                    renderClothes() : renderAccessories()
-                  "
-                  class="js__filter"
-                  type="radio"
-                  :id="tab.id"
-                  name="item-selector"
-                >
-                <label :for="tab.id">{{ tab.title }}</label>
-              </div>
+                :tab="tab"
+                @rAll="renderAll"
+                @rClothes="renderClothes"
+                @rAccessories="renderAccessories"
+              ></catalog-filter>
             </div>
             <div class="catalog js__catalog">
               <catalog-item
@@ -74,6 +64,7 @@ import SideNavigation from './components/sideNavigation.vue';
 import User from './components/User.vue';
 import AppFooter from './components/AppFooter.vue';
 import CatalogItem from './components/CatalogItem.vue';
+import CatalogFilter from './components/CatalogFilter.vue';
 
 export default {
   name: 'App',
@@ -86,6 +77,7 @@ export default {
     OrderModal,
     AppFooter,
     CatalogItem,
+    CatalogFilter,
   },
   data() {
     return {
