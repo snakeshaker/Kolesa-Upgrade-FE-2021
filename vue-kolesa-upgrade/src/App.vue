@@ -63,7 +63,7 @@
                   <div v-if="!item.isClothes" class="catalog__size">
                     Объемы 0,5/0,7/1,0
                   </div>
-                  <button @click="toggleModal" class="catalog__btn" type="button">
+                  <button @click="openCard(item)" class="catalog__btn" type="button">
                     Заказать
                   </button>
                 </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
     </footer>
-    <modal :isModalOpen="isShowModal" @toggle="toggleModal"></modal>
+    <modal :data="modalData" :isModalOpen="isShowModal" @toggle="toggleModal"></modal>
   </div>
 </template>
 
@@ -124,6 +124,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      modalData: {},
       filterTabs: [
         {
           title: 'Все товары',
@@ -268,6 +269,10 @@ export default {
     },
   },
   methods: {
+    openCard(data) {
+      this.toggleModal();
+      this.modalData = data;
+    },
     toggleModal() {
       this.isShowModal = !this.isShowModal;
     },
