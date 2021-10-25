@@ -36,38 +36,13 @@
               </div>
             </div>
             <div class="catalog js__catalog">
-              <div
+              <catalog-item
                 v-for="item in renderCatalog"
                 :key="item.id"
-                class="catalog__item"
-              >
-                <div class="catalog__img">
-                  <img
-                    :src="require(`@/assets/img/${item.img}`)"
-                    class="js__img" alt="item"
-                    width="330"
-                    height="330"
-                  >
-                  <div v-if="item.isNew" class="catalog__new">New</div>
-                </div>
-                <div class="catalog__info">
-                  <div class="catalog__price">
-                    {{item.price}} баллов
-                  </div>
-                  <div class="catalog__name">
-                    {{item.title}}
-                  </div>
-                  <div v-if="item.isClothes" class="catalog__size">
-                    Размеры S/M/L
-                  </div>
-                  <div v-if="!item.isClothes" class="catalog__size">
-                    Объемы 0,5/0,7/1,0
-                  </div>
-                  <button @click="openCard(item)" class="catalog__btn" type="button">
-                    Заказать
-                  </button>
-                </div>
-              </div>
+                :item="item"
+                :data="modalData"
+                @openCard="openCard(item)"
+              ></catalog-item>
             </div>
         </main>
       </div>
@@ -98,6 +73,7 @@ import Search from './components/Search.vue';
 import SideNavigation from './components/sideNavigation.vue';
 import User from './components/User.vue';
 import AppFooter from './components/AppFooter.vue';
+import CatalogItem from './components/CatalogItem.vue';
 
 export default {
   name: 'App',
@@ -109,6 +85,7 @@ export default {
     HotButtons,
     OrderModal,
     AppFooter,
+    CatalogItem,
   },
   data() {
     return {
