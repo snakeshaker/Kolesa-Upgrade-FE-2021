@@ -5,14 +5,18 @@
           <button class="card__close" type="button" @click="toggleModal"></button>
           <div class="card__images">
               <img
-                :src="require(`@/assets/img/${data.img}`)"
+                :src="data.img ?
+                require(`@/assets/img/${data.img}`) :
+                require(`@/assets/img/no-photo.jpg`)"
                 alt="main image"
                 class="card__images--big">
               <div class="card__little-images">
                 <div class="card__images--little">
                   <img
                     class="card__images--active"
-                    :src="require(`@/assets/img/${data.img}`)"
+                    :src="data.img ?
+                    require(`@/assets/img/${data.img}`) :
+                    require(`@/assets/img/no-photo.jpg`)"
                     alt="little image">
                 </div>
               </div>

@@ -2,7 +2,9 @@
   <div class="catalog__item">
     <div class="catalog__img">
       <img
-        :src="require(`@/assets/img/${item.img}`)"
+        :src="item.img ?
+        require(`@/assets/img/${item.img}`) :
+        require(`@/assets/img/no-photo.jpg`)"
         class="js__img" alt="item"
         width="330"
         height="330"
