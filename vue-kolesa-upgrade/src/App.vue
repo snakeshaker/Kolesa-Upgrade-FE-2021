@@ -101,7 +101,12 @@
             </div>
         </div>
     </footer>
-    <modal :data="modalData" :isModalOpen="isShowModal" @toggle="toggleModal"></modal>
+    <modal
+      :data="modalData"
+      :isModalOpen="isShowModal"
+      @toggle="toggleModal"
+      @order="setBalance"
+    ></modal>
   </div>
 </template>
 
@@ -124,6 +129,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      balance: 3945,
       modalData: {},
       filterTabs: [
         {
@@ -287,6 +293,10 @@ export default {
     },
     renderAccessories() {
       this.renderCatalog = this.sortCatalog(this.accessories);
+    },
+    setBalance(price) {
+      this.toggleModal();
+      this.balance -= price;
     },
   },
   beforeMount() {

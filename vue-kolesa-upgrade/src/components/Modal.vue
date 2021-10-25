@@ -21,7 +21,7 @@
             <div class="card__top">
               <h3 class="card__title">{{ data.title }}</h3>
               <p class="card__price">{{ data.price }} баллов</p>
-              <button class="card__button" type="submit">
+              <button @click="order" class="card__button" type="submit">
                 Заказать
               </button>
               <div class="card__balance">
@@ -97,6 +97,9 @@ export default {
   methods: {
     toggleModal() {
       this.$emit('toggle');
+    },
+    order() {
+      this.$emit('order', this.data.price);
     },
   },
 };
