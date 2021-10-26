@@ -184,18 +184,6 @@
         left: 8px;
         bottom: 8px;
         right: 65px;
-
-        &--blue {
-            background: $modal-blue;
-        }
-
-        &--beige {
-            background: $modal-beige;
-        }
-
-        &--gray {
-            background: $modal-gray;
-        }
     }
 
     &__overlay {
@@ -250,5 +238,9 @@
             font-size: 18px;
             line-height: 28px;
         }
+    }
+
+    &__radiobox {
+        display: flex;
     }
 }

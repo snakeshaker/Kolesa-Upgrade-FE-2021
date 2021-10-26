@@ -5,19 +5,36 @@
           <button class="card__close" type="button" @click="toggleModal"></button>
           <div class="card__images">
               <img
-                :src="data.img ?
-                require(`@/assets/img/${data.img}`) :
-                require(`@/assets/img/no-photo.jpg`)"
+                :src="activeImage != 'init' ?
+                activeImage :
+                data.mainImage"
                 alt="main image"
-                class="card__images--big">
+                class="card__images--big"
+                width="330"
+                height="330"
+              >
               <div class="card__little-images">
                 <div class="card__images--little">
                   <img
-                    class="card__images--active"
-                    :src="data.img ?
-                    require(`@/assets/img/${data.img}`) :
+                    @click="activeImage = 'init'"
+                    :class="{ 'card__images--active' : activeImage === 'init'}"
+                    :src="data.mainImage ?
+                    data.mainImage :
                     require(`@/assets/img/no-photo.jpg`)"
-                    alt="little image">
+                    alt="little image"
+                  >
+                </div>
+                <div
+                  v-for="(image,index) in uniq"
+                  :key="index"
+                  class="card__images--little"
+                >
+                  <img
+                    @click="activeImage = image"
+                    :class="{ 'card__images--active' : activeImage === image}"
+                    :src="image"
+                    alt="little image"
+                  >
                 </div>
               </div>
           </div>
@@ -50,51 +67,57 @@
               </div>
             </div>
             <div class="card__bottom">
-              <p v-if="data.isClothes" class="card__heading">Цвета:</p>
-              <div v-if="data.isClothes" class="card__radio-group">
-                <input type="radio" id="color-blue" name="color-selector">
-                <label class="card__radio-group--color" for="color-blue">
-                  <div class="card__square card__square--blue"></div>
-                  Синий
-                </label>
-                <input type="radio" id="color-beige" name="color-selector">
-                <label class="card__radio-group--color" for="color-beige">
-                  <div class="card__square card__square--beige"></div>
-                  Бежевый
-                </label>
-                <input type="radio" id="color-gray" name="color-selector">
-                <label class="card__radio-group--color" for="color-gray">
-                  <div class="card__square card__square--gray"></div>
-                  Серый
-                </label>
+              <div v-if="data.sizes" class="card__choose">
+                <p class="card__heading">Цвета:</p>
+                <div class="card__radiobox">
+                  <div
+                    v-for="(color,index) in data.colors"
+                    :key="index"
+                    class="card__radio-group"
+                  >
+                    <input type="radio" :id="color.color" name="color-selector">
+                    <label class="card__radio-group--color" :for="color.color">
+                      <div class="card__square" :style="{background: color.color}"></div>
+                      {{ color.label }}
+                    </label>
+                  </div>
+                </div>
               </div>
-              <p v-if="data.isClothes" class="card__heading">Размеры:</p>
-              <div v-if="data.isClothes" class="card__radio-group">
-                <input type="radio" id="size-s" name="size-selector">
-                <label class="card__radio-group--size" for="size-s">S</label>
-                <input type="radio" id="size-m" name="size-selector">
-                <label class="card__radio-group--size" for="size-m">M</label>
-                <input type="radio" id="size-l" name="size-selector">
-                <label class="card__radio-group--size" for="size-l">L</label>
+              <div v-if="data.sizes.length" class="card__choose">
+                <p class="card__heading">Размеры:</p>
+                <div class="card__radiobox">
+                  <div
+                    v-for="(size,index) in data.sizes"
+                    :key="index"
+                    class="card__radio-group"
+                  >
+                    <input type="radio" :id="size" name="size-selector">
+                    <label class="card__radio-group--size" :for="size">
+                      {{ size }}
+                    </label>
+                  </div>
+                </div>
               </div>
-              <p v-if="!data.isClothes" class="card__heading">Объемы:</p>
-              <div v-if="!data.isClothes" class="card__radio-group">
-                <input type="radio" id="size-s" name="size-selector">
-                <label class="card__radio-group--size" for="size-s">0,5л</label>
-                <input type="radio" id="size-m" name="size-selector">
-                <label class="card__radio-group--size" for="size-m">0,7л</label>
-                <input type="radio" id="size-l" name="size-selector">
-                <label class="card__radio-group--size" for="size-l">1,0л</label>
+              <div v-if="!data.sizes" class="card__choose">
+                <p class="card__heading">Объемы:</p>
+                <div class="card__radio-group">
+                  <input type="radio" id="size-s" name="size-selector">
+                  <label class="card__radio-group--size" for="size-s">0,5л</label>
+                  <input type="radio" id="size-m" name="size-selector">
+                  <label class="card__radio-group--size" for="size-m">0,7л</label>
+                  <input type="radio" id="size-l" name="size-selector">
+                  <label class="card__radio-group--size" for="size-l">1,0л</label>
+                </div>
               </div>
               <p class="card__heading card__heading--bold">Детали:</p>
               <p>
-                {{ data.details }}
+                {{ data.description }}
               </p>
               <p
-                v-if="data.isClothes"
+                v-if="data.sizes"
                 class="card__heading card__heading--bold"
               >Как выбрать размер:</p>
-              <p v-if="data.isClothes">Написать дяде Рику для уточнения</p>
+              <p v-if="data.sizes">Написать дяде Рику для уточнения</p>
             </div>
           </form>
         </div>
@@ -111,9 +134,16 @@ export default {
     isModalOpen: Boolean,
     data: Object,
     balance: Number,
+    uniq: Array,
+  },
+  data() {
+    return {
+      activeImage: 'init',
+    };
   },
   methods: {
     toggleModal() {
+      this.activeImage = 'init';
       this.$emit('toggle');
     },
     order() {

@@ -44,6 +44,7 @@
       :isModalOpen="isShowModal"
       @toggle="toggleModal"
       @order="setBalance"
+      :uniq="uniqImages"
     ></modal>
     <order-modal
       :data="modalData"
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import axios from '@/axios';
 import HotButtons from './components/HotButtons.vue';
 import Modal from './components/Modal.vue';
 import OrderModal from './components/OrderModal.vue';
@@ -79,6 +81,13 @@ export default {
     CatalogItem,
     CatalogFilter,
   },
+  mounted() {
+    axios.get('https://api.json-generator.com/templates/-_RLsEGjof6i/data')
+      .then((response) => {
+        console.log(response.data);
+        this.renderCatalog = response.data;
+      });
+  },
   data() {
     return {
       isShowModal: false,
@@ -86,6 +95,7 @@ export default {
       isComplete: false,
       balance: 900,
       modalData: {},
+      uniqImages: [],
       filterTabs: [
         {
           title: 'Все товары',
@@ -101,127 +111,6 @@ export default {
         },
       ],
       renderCatalog: [],
-      clothes: [
-        {
-          id: 0,
-          isNew: false,
-          title: 'Джинсы "Зимой и летом одним цветом"',
-          price: 290,
-          img: 'jeans-img.png',
-          isClothes: true,
-          details: 'Обычные синие джинсы. Материал: Деним 100%',
-        },
-        {
-          id: 1,
-          isNew: false,
-          title: 'Свитшот "Простенько и со вкусом"',
-          price: 270,
-          img: 'big-img.png',
-          isClothes: true,
-          details: 'Брендированная толстовка от Qazaq Republic. Материал: Хлопок 80%, Вискоза 20%',
-        },
-        {
-          id: 2,
-          isNew: true,
-          title: 'Свитер "Чистый код"',
-          price: 180,
-          img: 'sweater-img.png',
-          isClothes: true,
-          details: 'Брендированный свитер от Robert Martin. Материал: Синтетика 100%',
-        },
-        {
-          id: 3,
-          isNew: false,
-          title: 'Футболка "Эволюционируй или сдохни"',
-          price: 220,
-          img: 'item-img.png',
-          isClothes: true,
-          details: 'Брендированная футболка от Qazaq Republic. Материал: Хлопок 90%, Вискоза 10%',
-        },
-        {
-          id: 4,
-          isNew: false,
-          title: 'Шапка "Просто сделай это"',
-          price: 150,
-          img: 'beanie-img.jpg',
-          isClothes: true,
-          details: 'Брендированная шапка от Qazaq Republic. Материал: Хлопок 50%, Вискоза 50%',
-        },
-        {
-          id: 5,
-          isNew: true,
-          title: 'Джоггеры "Стильный программист"',
-          price: 300,
-          img: 'trousers-img.png',
-          isClothes: true,
-          details: 'Брендированные джоггеры от China Republic. Материал: Хлопок 10%, Синтетика 90%',
-        },
-        {
-          id: 6,
-          isNew: false,
-          title: 'Кеды "Замшевоё всё"',
-          price: 350,
-          img: 'sneakers-img.jpg',
-          isClothes: true,
-          details: 'Кеды от Levi`s',
-        },
-      ],
-      accessories: [
-        {
-          id: 7,
-          isNew: true,
-          title: 'Фирменная кружка',
-          price: 240,
-          img: 'mug2-img.jpg',
-          isClothes: false,
-          details: 'Классная кружка',
-        },
-        {
-          id: 8,
-          isNew: false,
-          title: 'Белая кружка',
-          price: 180,
-          img: 'mug-img.jpg',
-          isClothes: false,
-          details: 'Классная кружка',
-        },
-        {
-          id: 9,
-          isNew: false,
-          title: 'Бутылка для воды',
-          price: 160,
-          img: 'bottle-img.png',
-          isClothes: false,
-          details: 'Классная бутылка',
-        },
-        {
-          id: 10,
-          isNew: true,
-          title: 'Бутылка для спорт-пита',
-          price: 100,
-          img: 'bottle2-img.jpg',
-          isClothes: false,
-          details: 'Классная бутылка',
-        },
-        {
-          id: 11,
-          isNew: false,
-          title: 'Прозрачная бутылка',
-          price: 80,
-          img: 'bottle1-img.png',
-          isClothes: false,
-          details: 'Классная бутылка',
-        },
-        {
-          id: 12,
-          isNew: false,
-          title: 'Кружка с принтом',
-          price: 110,
-          img: 'mug1-img.jpg',
-          isClothes: false,
-          details: 'Классная кружка',
-        },
-      ],
     };
   },
   computed: {
@@ -232,6 +121,7 @@ export default {
   methods: {
     openCard(data) {
       this.toggleModal();
+      this.uniqImages = [...new Set(data.images)];
       this.modalData = data;
     },
     toggleModal() {
@@ -263,9 +153,6 @@ export default {
         this.balance -= price;
       }
     },
-  },
-  beforeMount() {
-    this.renderAll();
   },
 };
 </script>
