@@ -89,6 +89,8 @@ export default {
       user: {},
       modalData: {},
       uniqImages: [],
+      clothes: [],
+      accessories: [],
       filterTabs: [
         {
           title: 'Все товары',
@@ -126,22 +128,24 @@ export default {
     sortCatalog(arr) {
       return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
+    fetchInfo() {
+      axios.get('-_RLsEGjof6i/data')
+        .then((response) => {
+          this.clothes = this.sortCatalog(response.data);
+        });
+      axios.get('q3OPxRyEcPvP/data')
+        .then((response) => {
+          this.accessories = this.sortCatalog(response.data);
+        });
+    },
     renderAll() {
       this.renderCatalog = this.sortCatalog(this.allItems);
     },
     renderClothes() {
-      axios.get('-_RLsEGjof6i/data')
-        .then((response) => {
-          console.log(response.data);
-          this.renderCatalog = this.sortCatalog(response.data);
-        });
+      this.renderCatalog = this.clothes;
     },
     renderAccessories() {
-      axios.get('q3OPxRyEcPvP/data')
-        .then((response) => {
-          console.log(response.data);
-          this.renderCatalog = this.sortCatalog(response.data);
-        });
+      this.renderCatalog = this.accessories;
     },
     setBalance(price) {
       this.toggleModal();
@@ -157,6 +161,9 @@ export default {
     updateUser(info) {
       this.user = info;
     },
+  },
+  created() {
+    this.fetchInfo();
   },
 };
 </script>
