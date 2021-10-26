@@ -83,7 +83,7 @@
                   </div>
                 </div>
               </div>
-              <div v-if="data.sizes.length" class="card__choose">
+              <div v-if="data.sizes && data.sizes.length" class="card__choose">
                 <p class="card__heading">Размеры:</p>
                 <div class="card__radiobox">
                   <div
@@ -98,15 +98,19 @@
                   </div>
                 </div>
               </div>
-              <div v-if="!data.sizes" class="card__choose">
+              <div v-if="data.volumes && data.volumes.length" class="card__choose">
                 <p class="card__heading">Объемы:</p>
-                <div class="card__radio-group">
-                  <input type="radio" id="size-s" name="size-selector">
-                  <label class="card__radio-group--size" for="size-s">0,5л</label>
-                  <input type="radio" id="size-m" name="size-selector">
-                  <label class="card__radio-group--size" for="size-m">0,7л</label>
-                  <input type="radio" id="size-l" name="size-selector">
-                  <label class="card__radio-group--size" for="size-l">1,0л</label>
+                <div class="card__radiobox">
+                  <div
+                    v-for="(volume,index) in data.volumes"
+                    :key="index"
+                    class="card__radio-group"
+                  >
+                    <input type="radio" :id="volume" name="size-selector">
+                    <label class="card__radio-group--size" :for="volume">
+                      {{ volume }}
+                    </label>
+                  </div>
                 </div>
               </div>
               <p class="card__heading card__heading--bold">Детали:</p>

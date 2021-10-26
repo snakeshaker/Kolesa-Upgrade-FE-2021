@@ -81,13 +81,6 @@ export default {
     CatalogItem,
     CatalogFilter,
   },
-  mounted() {
-    axios.get('-_RLsEGjof6i/data')
-      .then((response) => {
-        console.log(response.data);
-        this.renderCatalog = response.data;
-      });
-  },
   data() {
     return {
       isShowModal: false,
@@ -137,10 +130,18 @@ export default {
       this.renderCatalog = this.sortCatalog(this.allItems);
     },
     renderClothes() {
-      this.renderCatalog = this.sortCatalog(this.clothes);
+      axios.get('-_RLsEGjof6i/data')
+        .then((response) => {
+          console.log(response.data);
+          this.renderCatalog = this.sortCatalog(response.data);
+        });
     },
     renderAccessories() {
-      this.renderCatalog = this.sortCatalog(this.accessories);
+      axios.get('q3OPxRyEcPvP/data')
+        .then((response) => {
+          console.log(response.data);
+          this.renderCatalog = this.sortCatalog(response.data);
+        });
     },
     setBalance(price) {
       this.toggleModal();

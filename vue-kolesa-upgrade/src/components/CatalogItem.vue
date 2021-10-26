@@ -22,7 +22,7 @@
         {{ formatSizes(item.sizes) }}
       </div>
       <div v-if="!item.sizes" class="catalog__size">
-        Объемы 0,5/0,7/1,0
+        {{ formatVolumes(item.volumes) }}
       </div>
       <button @click="openCard" class="catalog__btn" type="button">
         Заказать
@@ -44,6 +44,9 @@ export default {
     },
     formatSizes(sizes) {
       return sizes && sizes.length ? `Размеры ${sizes.join('/')}` : 'Размеры неизвестны';
+    },
+    formatVolumes(vols) {
+      return vols && vols.length ? `Объемы ${vols.join('/')}` : 'Объемы неизвестны';
     },
   },
 };
