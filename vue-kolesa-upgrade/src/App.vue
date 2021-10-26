@@ -9,7 +9,7 @@
             <form action="" class="header__form">
               <search></search>
             </form>
-            <user :balance="balance"></user>
+            <user @updateUser="updateUser" :appUser="user"></user>
         </header>
         <side-navigation></side-navigation>
         <main class="main">
@@ -40,7 +40,7 @@
     <app-footer></app-footer>
     <modal
       :data="modalData"
-      :balance="balance"
+      :balance="user.score"
       :isModalOpen="isShowModal"
       @toggle="toggleModal"
       @order="setBalance"
@@ -48,7 +48,7 @@
     ></modal>
     <order-modal
       :data="modalData"
-      :balance="balance"
+      :balance="user.score"
       :isComplete="isComplete"
       :isOrderPlaced="isShowOrder"
       @toggle-order="toggleOrderModal"
@@ -82,7 +82,7 @@ export default {
     CatalogFilter,
   },
   mounted() {
-    axios.get('https://api.json-generator.com/templates/-_RLsEGjof6i/data')
+    axios.get('-_RLsEGjof6i/data')
       .then((response) => {
         console.log(response.data);
         this.renderCatalog = response.data;
@@ -93,7 +93,7 @@ export default {
       isShowModal: false,
       isShowOrder: false,
       isComplete: false,
-      balance: 900,
+      user: {},
       modalData: {},
       uniqImages: [],
       filterTabs: [
@@ -144,14 +144,17 @@ export default {
     },
     setBalance(price) {
       this.toggleModal();
-      if (this.balance < price) {
+      if (this.user.score < price) {
         this.isShowOrder = true;
         this.isComplete = false;
       } else {
         this.isShowOrder = true;
         this.isComplete = true;
-        this.balance -= price;
+        this.user.score -= price;
       }
+    },
+    updateUser(info) {
+      this.user = info;
     },
   },
 };
