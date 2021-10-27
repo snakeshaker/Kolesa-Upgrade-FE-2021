@@ -17,6 +17,7 @@
             <hot-buttons></hot-buttons>
             <div class="main__item-filter">
               <catalog-filter
+                :is="responseDone"
                 v-for="(tab,index) in filterTabs"
                 :key="index"
                 :tab="tab"
@@ -91,6 +92,9 @@ export default {
       uniqImages: [],
       clothes: [],
       accessories: [],
+      initialTime: performance.now(),
+      responseTime: 5000,
+      responseDone: '',
       filterTabs: [
         {
           title: 'Все товары',
@@ -113,6 +117,9 @@ export default {
       return [...this.clothes, ...this.accessories];
     },
   },
+  created() {
+    this.fetchInfo();
+  },
   methods: {
     openCard(data) {
       this.toggleModal();
@@ -128,14 +135,16 @@ export default {
     sortCatalog(arr) {
       return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
-    fetchInfo() {
+    async fetchInfo() {
+      await axios.get('q3OPxRyEcPvP/data')
+        .then((response) => {
+          this.accessories = this.sortCatalog(response.data);
+        });
       axios.get('-_RLsEGjof6i/data')
         .then((response) => {
           this.clothes = this.sortCatalog(response.data);
-        });
-      axios.get('q3OPxRyEcPvP/data')
-        .then((response) => {
-          this.accessories = this.sortCatalog(response.data);
+          this.responseTime = performance.now() - this.initialTime / 1000;
+          this.responseDone = 'CatalogFilter';
         });
     },
     renderAll() {
@@ -161,9 +170,6 @@ export default {
     updateUser(info) {
       this.user = info;
     },
-  },
-  created() {
-    this.fetchInfo();
   },
 };
 </script>

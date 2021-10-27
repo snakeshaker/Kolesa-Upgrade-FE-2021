@@ -22,6 +22,10 @@ export default {
   props: {
     tab: Object,
   },
+  mounted() {
+    const elem = document.getElementById('item_all');
+    elem.click();
+  },
   methods: {
     renderAll() {
       this.$emit('rAll');
