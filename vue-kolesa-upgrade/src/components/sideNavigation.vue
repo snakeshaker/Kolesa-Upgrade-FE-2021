@@ -9,18 +9,8 @@
             :class="{ 'aside__nav--active': activeLink === link }"
             @click="activeLink = link"
             href="#"
-          >
-            {{ link }}
-          </a>
-          <a
-            v-else
-            class="aside__nav-link"
-            :class="{ 'aside__nav--active': activeLink === link }"
-            @click="activeLink = link"
-            href="#"
-          >
-            Kolesa <span class="aside__nav--bold">Team</span>
-          </a>
+            v-html="link"
+          ></a>
         </li>
       </ul>
     </nav>
@@ -35,7 +25,7 @@ export default {
     return {
       menuLinks: [
         'Оргсхема',
-        'Kolesa Team',
+        'Kolesa <span class="aside__nav--bold">Team</span>',
         'Kolesa Shop',
         'Картина компании',
         'Новости',
