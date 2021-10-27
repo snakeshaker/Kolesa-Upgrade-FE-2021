@@ -1,12 +1,16 @@
 <template>
   <a class="user-block" href="">
-    <img class="user-block__avatar" :src="user.avatarUrl" alt="User avatar">
+    <img
+      class="user-block__avatar"
+      :src="user.avatarUrl || require(`@/assets/img/no-avatar.png`)"
+      alt="User avatar"
+    >
     <div class="user-block__info">
       <div class="user-block__name">
-        {{ user.name }}
+        {{ user.name || 'Аноним'}}
       </div>
       <div class="user-block__points">
-        {{ user.score }} баллов
+        {{ user.score || '0'}} баллов
       </div>
     </div>
   </a>
