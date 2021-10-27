@@ -1,11 +1,7 @@
 <template>
   <div class="main__filter-radio">
     <input
-      @click="
-        tab.id == 'item_all' ?
-        renderAll() : tab.id == 'item_clothes' ?
-        renderClothes() : renderAccessories()
-      "
+      @click="chooseRender(tab)"
       class="js__filter"
       type="radio"
       :id="tab.id"
@@ -27,6 +23,11 @@ export default {
     elem.click();
   },
   methods: {
+    chooseRender(tab) {
+      if (tab.id === 'item_all') this.renderAll();
+      else if (tab.id === 'item_clothes') this.renderClothes();
+      else this.renderAccessories();
+    },
     renderAll() {
       this.$emit('rAll');
     },
