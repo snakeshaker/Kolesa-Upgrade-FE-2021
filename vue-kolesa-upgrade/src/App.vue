@@ -118,6 +118,15 @@ export default {
     },
   },
   created() {
+    axios.interceptors.request.use((config) => {
+      document.querySelector('.catalog').classList.add('catalog--loading');
+      console.log('loading');
+      return config;
+    }, (error) => Promise.reject(error));
+    axios.interceptors.response.use((response) => {
+      document.querySelector('.catalog').classList.remove('catalog--loading');
+      return response;
+    }, (error) => Promise.reject(error));
     this.fetchInfo();
   },
   methods: {
