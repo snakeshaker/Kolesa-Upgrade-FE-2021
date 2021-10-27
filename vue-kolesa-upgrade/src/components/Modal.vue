@@ -56,7 +56,7 @@
                 class="card__button card__button--low"
                 type="submit"
               >
-                Попросить {{ lowBalance() }} баллов
+                Попросить {{ lowBalance }} баллов
               </button>
               <div class="card__balance">
                 <div class="card__balance-info">
@@ -145,6 +145,11 @@ export default {
       activeImage: 'init',
     };
   },
+  computed: {
+    lowBalance() {
+      return this.data.price - this.balance;
+    },
+  },
   methods: {
     toggleModal() {
       this.activeImage = 'init';
@@ -152,9 +157,6 @@ export default {
     },
     order() {
       this.$emit('order', this.data.price);
-    },
-    lowBalance() {
-      return this.data.price - this.balance;
     },
   },
 };
