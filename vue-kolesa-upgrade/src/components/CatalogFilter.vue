@@ -18,10 +18,6 @@ export default {
   props: {
     tab: Object,
   },
-  mounted() {
-    const elem = document.getElementById('item_all');
-    elem.click();
-  },
   methods: {
     chooseRender(tab) {
       if (tab.id === 'item_all') this.renderAll();

@@ -17,7 +17,6 @@
             <hot-buttons></hot-buttons>
             <div class="main__item-filter">
               <catalog-filter
-                :is="responseDone"
                 v-for="(tab,index) in filterTabs"
                 :key="index"
                 :tab="tab"
@@ -26,7 +25,7 @@
                 @rAccessories="renderAccessories"
               ></catalog-filter>
             </div>
-            <div class="catalog js__catalog">
+            <div class="catalog">
               <catalog-item
                 v-for="item in renderCatalog"
                 :key="item.id"
@@ -92,9 +91,6 @@ export default {
       uniqImages: [],
       clothes: [],
       accessories: [],
-      initialTime: performance.now(),
-      responseTime: 5000,
-      responseDone: '',
       filterTabs: [
         {
           title: 'Все товары',
@@ -118,15 +114,10 @@ export default {
     },
   },
   created() {
-    axios.interceptors.request.use((config) => {
-      document.querySelector('.catalog').classList.add('catalog--loading');
-      return config;
-    }, (error) => Promise.reject(error));
-    axios.interceptors.response.use((response) => {
-      document.querySelector('.catalog').classList.remove('catalog--loading');
-      return response;
-    }, (error) => Promise.reject(error));
     this.fetchInfo();
+  },
+  mounted() {
+    document.querySelector('.catalog').classList.add('catalog--loading');
   },
   methods: {
     openCard(data) {
@@ -143,17 +134,25 @@ export default {
     sortCatalog(arr) {
       return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
-    async fetchInfo() {
-      await axios.get('q3OPxRyEcPvP/data')
+    async getAccessories() {
+      axios.get('q3OPxRyEcPvP/data')
         .then((response) => {
           this.accessories = this.sortCatalog(response.data);
         });
+    },
+    async getClothes() {
       axios.get('-_RLsEGjof6i/data')
         .then((response) => {
           this.clothes = this.sortCatalog(response.data);
-          this.responseTime = performance.now() - this.initialTime / 1000;
-          this.responseDone = 'CatalogFilter';
         });
+    },
+    async fetchInfo() {
+      await this.getClothes();
+      await this.getAccessories();
+      setTimeout(() => {
+        document.querySelector('.catalog').classList.remove('catalog--loading');
+        this.renderAll();
+      }, 1000);
     },
     renderAll() {
       this.renderCatalog = this.sortCatalog(this.allItems);
