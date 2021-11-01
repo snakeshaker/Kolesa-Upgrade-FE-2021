@@ -13,27 +13,27 @@
         </header>
         <side-navigation></side-navigation>
         <main class="main">
-            <div class="main__banner"></div>
-            <hot-buttons></hot-buttons>
-            <div class="main__item-filter">
-              <catalog-filter
-                v-for="(tab,index) in filterTabs"
-                :key="index"
-                :tab="tab"
-                @rAll="renderAll"
-                @rClothes="renderClothes"
-                @rAccessories="renderAccessories"
-              ></catalog-filter>
-            </div>
-            <div class="catalog">
-              <catalog-item
-                v-for="item in renderCatalog"
-                :key="item.id"
-                :item="item"
-                :data="modalData"
-                @openCard="openCard(item)"
-              ></catalog-item>
-            </div>
+          <div class="main__banner"></div>
+          <hot-buttons></hot-buttons>
+          <div class="main__item-filter">
+            <catalog-filter
+              v-for="(tab,index) in filterTabs"
+              :key="index"
+              :tab="tab"
+              @rAll="renderAll"
+              @rClothes="renderClothes"
+              @rAccessories="renderAccessories"
+            ></catalog-filter>
+          </div>
+          <div class="catalog">
+            <catalog-item
+              v-for="item in renderCatalog"
+              :key="item.id"
+              :item="item"
+              :data="modalData"
+              @openCard="openCard(item)"
+            ></catalog-item>
+          </div>
         </main>
       </div>
     </div>
