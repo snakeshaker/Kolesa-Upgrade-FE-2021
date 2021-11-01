@@ -1,32 +1,51 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="wrap">
+      <div class="content-container">
+        <header class="header">
+            <div class="header__logo">
+                <img src="@/assets/svg/kolesa-logo.svg" alt="Logo">
+            </div>
+            <form action="" class="header__form">
+              <search></search>
+            </form>
+            <user @updateUser="updateUser" :appUser="user"></user>
+        </header>
+        <side-navigation></side-navigation>
+        <router-view></router-view>
+      </div>
     </div>
-    <router-view/>
+    <app-footer></app-footer>
   </div>
 </template>
 
+<script>
+import Search from './layouts/components/Search.vue';
+import SideNavigation from './layouts/components/sideNavigation.vue';
+import User from './layouts/components/User.vue';
+import AppFooter from './layouts/components/AppFooter.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Search,
+    User,
+    SideNavigation,
+    AppFooter,
+  },
+  data() {
+    return {
+      user: {},
+    };
+  },
+  methods: {
+    updateUser(info) {
+      this.user = info;
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import './assets/scss/style.scss';
 </style>
