@@ -25,7 +25,7 @@ export default {
       menuLinks: [
         {
           name: 'Оргсхема',
-          link: '/org',
+          link: '/',
           isExact: true,
         },
         {
