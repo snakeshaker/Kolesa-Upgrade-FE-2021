@@ -8,7 +8,10 @@
         Получить баллы
       </div>
     </a>
-    <a class="points__block points__block--yellow">
+    <a
+      @click.prevent="goToPage"
+      class="points__block points__block--yellow"
+    >
       <div class="points__icon">
         <img src="@/assets/svg/points-question.svg" alt="question">
       </div>
@@ -31,5 +34,10 @@
 
 export default {
   name: 'HotButtons',
+  methods: {
+    goToPage() {
+      this.$router.push('/shop/how-to-get-points');
+    },
+  },
 };
 </script>
