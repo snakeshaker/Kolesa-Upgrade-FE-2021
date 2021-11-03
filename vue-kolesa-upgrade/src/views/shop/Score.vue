@@ -1,9 +1,14 @@
 <template>
   <main class="main">
     <div class="main__breadcrumbs">
-      <a href="">Kolesa Shop</a>
-      /
-      <a href="">Как получить баллы</a>
+      <router-link
+      v-for="(link,index) in links"
+      :key="index"
+      :to="link.link"
+      >
+        {{link.name}}
+        <span v-if="index !== links.length - 1">/</span>
+      </router-link>
     </div>
     <h2 class="main__heading">
       Как получить баллы
@@ -97,6 +102,16 @@ export default {
           image: 'Other.svg',
           heading: 'Другое',
           info: 'Получай баллы если уже что-то сделано',
+        },
+      ],
+      links: [
+        {
+          name: 'Kolesa Shop',
+          link: '/shop',
+        },
+        {
+          name: 'Как получить баллы',
+          link: '/shop/how-to-get-points',
         },
       ],
     };

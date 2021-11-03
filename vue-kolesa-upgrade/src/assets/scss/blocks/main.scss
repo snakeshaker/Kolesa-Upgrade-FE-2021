@@ -25,11 +25,10 @@
     }
 
     &__breadcrumbs {
-        color: $blue;
         font-size: 14px;
         line-height: 24px;
 
-        & a {
+        & * {
             color: $blue;
         }
     }
