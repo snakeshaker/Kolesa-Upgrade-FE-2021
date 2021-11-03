@@ -3,24 +3,13 @@
     <nav class="aside__nav">
       <ul>
         <li v-for="(link,index) in menuLinks" :key="index">
-          <a
-            v-if="link !== 'Kolesa Team'"
+          <router-link
             class="aside__nav-link"
-            :class="{ 'aside__nav--active': activeLink === link }"
-            @click="activeLink = link"
-            href="#"
-          >
-            {{ link }}
-          </a>
-          <a
-            v-else
-            class="aside__nav-link"
-            :class="{ 'aside__nav--active': activeLink === link }"
-            @click="activeLink = link"
-            href="#"
-          >
-            Kolesa <span class="aside__nav--bold">Team</span>
-          </a>
+            :exact="link.isExact"
+            active-class="aside__nav--active"
+            :to="link.link"
+            v-html="link.name"
+          ></router-link>
         </li>
       </ul>
     </nav>
@@ -34,17 +23,52 @@ export default {
   data() {
     return {
       menuLinks: [
-        'Оргсхема',
-        'Kolesa Team',
-        'Kolesa Shop',
-        'Картина компании',
-        'Новости',
-        'Education',
-        'Guidelines',
-        'Библиотека',
-        'FAQ',
+        {
+          name: 'Оргсхема',
+          link: '/org',
+          isExact: true,
+        },
+        {
+          name: 'Kolesa <span class="aside__nav--bold">Team</span>',
+          link: '/team',
+          isExact: true,
+        },
+        {
+          name: 'Kolesa Shop',
+          link: '/shop',
+          isExact: false,
+        },
+        {
+          name: 'Картина компании',
+          link: '/company',
+          isExact: true,
+        },
+        {
+          name: 'Новости',
+          link: '/news',
+          isExact: true,
+        },
+        {
+          name: 'Education',
+          link: '/edu',
+          isExact: true,
+        },
+        {
+          name: 'Guidelines',
+          link: '/guide',
+          isExact: true,
+        },
+        {
+          name: 'Библиотека',
+          link: '/library',
+          isExact: true,
+        },
+        {
+          name: 'FAQ',
+          link: '/faq',
+          isExact: true,
+        },
       ],
-      activeLink: 'Kolesa Shop',
     };
   },
 };
