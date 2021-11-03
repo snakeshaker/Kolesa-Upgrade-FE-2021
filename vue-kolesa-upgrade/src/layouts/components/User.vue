@@ -7,10 +7,10 @@
     >
     <div class="user-block__info">
       <div class="user-block__name">
-        {{ $store.state.user.name || 'Аноним'}}
+        {{ $store.state.user.name }}
       </div>
       <div class="user-block__points">
-        {{ $store.state.user.score || '0'}} баллов
+        {{ $store.state.user.score }} баллов
       </div>
     </div>
   </a>

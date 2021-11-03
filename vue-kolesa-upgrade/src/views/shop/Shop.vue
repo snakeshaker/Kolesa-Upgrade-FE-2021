@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import axios from '@/axios';
 import HotButtons from './components/HotButtons.vue';
 import Modal from './components/Modal.vue';
 import OrderModal from './components/OrderModal.vue';
@@ -64,11 +63,8 @@ export default {
       isShowModal: false,
       isShowOrder: false,
       isComplete: false,
-      user: {},
       modalData: {},
       uniqImages: [],
-      clothes: [],
-      accessories: [],
       filterTabs: [
         {
           title: 'Все товары',
@@ -88,14 +84,19 @@ export default {
   },
   computed: {
     allItems() {
-      return [...this.clothes, ...this.accessories];
+      return [...this.$store.state.clothes, ...this.$store.state.accessories];
     },
   },
   created() {
-    this.fetchInfo();
+    this.$store.dispatch('fetchClothes');
+    this.$store.dispatch('fetchAccessories');
   },
   mounted() {
     document.querySelector('.catalog').classList.add('catalog--loading');
+    setTimeout(() => {
+      document.querySelector('.catalog').classList.remove('catalog--loading');
+      this.renderAll();
+    }, 500);
   },
   methods: {
     openCard(data) {
@@ -112,34 +113,14 @@ export default {
     sortCatalog(arr) {
       return arr.slice().sort((item) => (item.isNew !== true ? 1 : -1));
     },
-    async getAccessories() {
-      axios.get('q3OPxRyEcPvP/data')
-        .then((response) => {
-          this.accessories = this.sortCatalog(response.data);
-        });
-    },
-    async getClothes() {
-      axios.get('-_RLsEGjof6i/data')
-        .then((response) => {
-          this.clothes = this.sortCatalog(response.data);
-        });
-    },
-    async fetchInfo() {
-      await this.getClothes();
-      await this.getAccessories();
-      setTimeout(() => {
-        document.querySelector('.catalog').classList.remove('catalog--loading');
-        this.renderAll();
-      }, 1500);
-    },
     renderAll() {
       this.renderCatalog = this.sortCatalog(this.allItems);
     },
     renderClothes() {
-      this.renderCatalog = this.clothes;
+      this.renderCatalog = this.sortCatalog(this.$store.state.clothes);
     },
     renderAccessories() {
-      this.renderCatalog = this.accessories;
+      this.renderCatalog = this.sortCatalog(this.$store.state.accessories);
     },
     setBalance(price) {
       this.toggleModal();
