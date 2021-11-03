@@ -23,7 +23,7 @@
     </div>
     <modal
       :data="modalData"
-      :balance="user.score"
+      :balance="userData.score"
       :isModalOpen="isShowModal"
       @toggle="toggleModal"
       @order="setBalance"
@@ -31,7 +31,7 @@
     ></modal>
     <order-modal
       :data="modalData"
-      :balance="user.score"
+      :balance="userData.score"
       :isComplete="isComplete"
       :isOrderPlaced="isShowOrder"
       @toggle-order="toggleOrderModal"
@@ -49,6 +49,9 @@ import CatalogFilter from './components/CatalogFilter.vue';
 
 export default {
   name: 'Shop',
+  props: {
+    userData: Object,
+  },
   components: {
     Modal,
     HotButtons,
@@ -140,13 +143,13 @@ export default {
     },
     setBalance(price) {
       this.toggleModal();
-      if (this.user.score < price) {
+      if (this.userData.score < price) {
         this.isShowOrder = true;
         this.isComplete = false;
       } else {
         this.isShowOrder = true;
         this.isComplete = true;
-        this.user.score -= price;
+        this.userData.score -= price;
       }
     },
   },

@@ -12,7 +12,10 @@
             <user @updateUser="updateUser" :appUser="user"></user>
         </header>
         <side-navigation></side-navigation>
-        <router-view></router-view>
+        <router-view
+          :userData="user"
+          @updateUser="updateUser"
+        ></router-view>
       </div>
     </div>
     <app-footer></app-footer>
