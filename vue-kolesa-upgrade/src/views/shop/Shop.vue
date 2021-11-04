@@ -23,7 +23,6 @@
     </div>
     <modal
       :data="modalData"
-      :balance="userData.score"
       :isModalOpen="isShowModal"
       @toggle="toggleModal"
       @order="setBalance"
@@ -31,7 +30,6 @@
     ></modal>
     <order-modal
       :data="modalData"
-      :balance="userData.score"
       :isComplete="isComplete"
       :isOrderPlaced="isShowOrder"
       @toggle-order="toggleOrderModal"
@@ -96,7 +94,7 @@ export default {
     setTimeout(() => {
       document.querySelector('.catalog').classList.remove('catalog--loading');
       this.renderAll();
-    }, 500);
+    }, 1000);
   },
   methods: {
     openCard(data) {
@@ -124,13 +122,13 @@ export default {
     },
     setBalance(price) {
       this.toggleModal();
-      if (this.userData.score < price) {
+      if (this.$store.state.user.score < price) {
         this.isShowOrder = true;
         this.isComplete = false;
       } else {
         this.isShowOrder = true;
         this.isComplete = true;
-        this.userData.score -= price;
+        this.$store.state.user.score -= price;
       }
     },
   },

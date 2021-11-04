@@ -9,13 +9,10 @@
             <form action="" class="header__form">
               <search></search>
             </form>
-            <user @updateUser="updateUser" :appUser="user"></user>
+            <user></user>
         </header>
         <side-navigation></side-navigation>
-        <router-view
-          :userData="user"
-          @updateUser="updateUser"
-        ></router-view>
+        <router-view></router-view>
       </div>
     </div>
     <app-footer></app-footer>
@@ -35,16 +32,6 @@ export default {
     User,
     SideNavigation,
     AppFooter,
-  },
-  data() {
-    return {
-      user: {},
-    };
-  },
-  methods: {
-    updateUser(info) {
-      this.user = info;
-    },
   },
 };
 </script>

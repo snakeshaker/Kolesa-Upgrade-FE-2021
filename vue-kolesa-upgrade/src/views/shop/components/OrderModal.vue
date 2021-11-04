@@ -38,7 +38,6 @@ export default {
   name: 'OrderModal',
   props: {
     data: Object,
-    balance: Number,
     isOrderPlaced: Boolean,
     isComplete: Boolean,
   },
