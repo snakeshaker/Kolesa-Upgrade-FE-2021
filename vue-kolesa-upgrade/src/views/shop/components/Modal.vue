@@ -43,7 +43,7 @@
               <h3 class="card__title">{{ data.title }}</h3>
               <p class="card__price">{{ data.price }} баллов</p>
               <button
-                v-if="balance >= data.price"
+                v-if="$store.state.user.score >= data.price"
                 @click="order"
                 class="card__button"
                 type="submit"
@@ -51,7 +51,7 @@
                 Заказать
               </button>
               <button
-                v-if="balance < data.price"
+                v-if="$store.state.user.score < data.price"
                 @click="order"
                 class="card__button card__button--low"
                 type="submit"
@@ -61,7 +61,7 @@
               <div class="card__balance">
                 <div class="card__balance-info">
                     <p class="card__balance-info--gray">Твой баланс:</p>
-                    <p class="card__sum">{{ balance }} баллов</p>
+                    <p class="card__sum">{{ $store.state.user.score }} баллов</p>
                 </div>
                 <div class="card__logo"></div>
               </div>
@@ -137,7 +137,6 @@ export default {
   props: {
     isModalOpen: Boolean,
     data: Object,
-    balance: Number,
     uniq: Array,
   },
   data() {
@@ -147,7 +146,7 @@ export default {
   },
   computed: {
     lowBalance() {
-      return this.data.price - this.balance;
+      return this.data.price - this.$store.state.user.score;
     },
   },
   methods: {
