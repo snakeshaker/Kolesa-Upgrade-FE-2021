@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Проверка Тест на добавление контента на страницу в блок #app 1`] = `
+<div
+  id="app"
+>
+  Контент добавлен!
+</div>
+`;
